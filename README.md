@@ -1,7 +1,7 @@
 MyOrder-Payments-iOS-SDK
 ========================
 
-Public iOS framework for the MyOrder payments SDK
+Public iOS framework for the [MyOrder payments SDK](http://myorder.nl/sdk).
 
 ## Installation guide
 
@@ -44,7 +44,7 @@ Before using the MyOrderSDK, you need to set up the credentials. You can do it b
     myOrder.apiSecret = @"hH3#1PxxS";
 ```
 
-Please, note that you will need your own `apiKey` and `apiSecret`.
+Please, note that you will need your own `apiKey` and `apiSecret`. You can get request them on the [Official MyOrder developers portal](http://myorder.nl/sdk)
 
 Additionally, you can customize other MyOrder properties depending on your project needs:
 
