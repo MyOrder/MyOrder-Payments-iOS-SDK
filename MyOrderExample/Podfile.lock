@@ -1,0 +1,19 @@
+PODS:
+  - CardIO (3.4.1)
+  - PayPalMPL (2.1.0)
+  - SVProgressHUD (1.0)
+  - TPKeyboardAvoiding (1.2.1)
+
+DEPENDENCIES:
+  - CardIO
+  - PayPalMPL (~> 2.1.0)
+  - SVProgressHUD
+  - TPKeyboardAvoiding
+
+SPEC CHECKSUMS:
+  CardIO: df7bd64f570de0f5d666beff29fbab5424dcb97c
+  PayPalMPL: 486bb3d38f3f5a2bc9513bef3e43162b8ed37d50
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+  TPKeyboardAvoiding: 0536c563e6c8b8e95a7c4bf87fca9c0991f5e826
+
+COCOAPODS: 0.28.0
