@@ -15,7 +15,14 @@ Add the following to your Podfile
 pod "MyOrder"
 ```
 
-and run `pod install` in your project.
+and optionally (if PayPal or CreditCard options in use)
+
+```
+pod 'PayPalMPL', '~>2.1.0'
+pod 'CardIO'
+```
+
+And run `pod install` in your project.
 
 
 ### Manual installation
