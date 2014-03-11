@@ -1,5 +1,5 @@
 //
-//  MOHistoryDetailsViewController.h
+//  MOReceiptDetailsViewController.h
 //  MyOrder
 //
 //  Created by Taras Kalapun on 6/10/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class MOReceipt;
 
-@interface MOHistoryDetailsViewController : UIViewController
+@interface MOReceiptDetailsViewController : UIViewController
 
 @property (nonatomic, strong) MOReceipt *receipt;
 

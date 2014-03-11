@@ -79,8 +79,8 @@
 
 - (IBAction)orderAction:(id)sender {
     MOOrder *order = [MOOrder new];
-    order.externalOrderId = @"12345";
-    [order addItemWithName:@"MyOrder demo item" price:5.5 quantity:2];
+    order.externalOrderId = @"123456";
+    [order addItemWithName:@"MyOrder demo item" price:2.25 quantity:2];
     
     UIViewController *vc = [[MyOrder shared] paymentViewControllerForOrder:order forceLogin:self.forceLoginSwitch.isOn onCompletion:^{
         [self.navigationController popToRootViewControllerAnimated:YES];

@@ -19,6 +19,7 @@
 @property (nonatomic, strong, readonly) MOTransaction *transaction;
 
 @property (nonatomic, copy) void (^completionBlock)(MOTransactionViewController *controller);
+@property (nonatomic, copy) void (^cancelBlock)(MOTransactionViewController *controller);
 @property (nonatomic, copy) void (^errorBlock)(MOTransactionViewController *controller, NSError *error);
 
 - (NSString *)providerName;
@@ -34,6 +35,6 @@
 - (void)finishedTransactionWithError:(NSError *)error;
 
 - (void)startInNavigationController:(UINavigationController *)navController;
-
+- (void)cancelTransaction;
 
 @end

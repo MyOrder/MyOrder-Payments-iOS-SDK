@@ -14,9 +14,6 @@
 /** Selected Issuer Id */
 @property (nonatomic, strong) NSString *issuerId;
 
-/** Bool number indicating if is ment to be an order or a wallet operation */
-@property (nonatomic, strong) NSNumber *isOrder;
-
 /** Return url to use on the external party service as callback */
 @property (nonatomic, strong) NSString *returnUrl;
 

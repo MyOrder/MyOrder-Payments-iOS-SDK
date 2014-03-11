@@ -1,5 +1,5 @@
 //
-//  MOHistoryViewController.h
+//  MOReceiptsViewController.h
 //  MyOrder
 //
 //  Created by Taras Kalapun on 6/6/13.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MOViewController.h"
 
-@interface MOHistoryViewController : MOViewController
+@interface MOReceiptsViewController : MOViewController
 
 @end

@@ -15,6 +15,7 @@
 
 typedef void(^MOBlock)(void);
 typedef void(^MOResponseDictionaryBlock)(NSDictionary *response);
+typedef void(^MOResponseArrayBlock)(NSArray *response);
 typedef void(^MOErrorBlock)(NSError *error);
 
 @protocol MOTransactionProtocol;
@@ -226,11 +227,11 @@ Returns a BOOL indicating if the user has been loggedIn before and saved his cre
 /** @name Getting transaction history */
 
 /**
- Loads Purchase history
- @param block Block executed when the history is loaded
+ Loads Purchase history and returns MOReceipts
+ @param block Block executed when the history is loaded. Contains parsed MOReceipts
  @param errorBlock Block executed when an error occurs
  */
-- (void)loadPurchaseHistoryOnSuccess:(MOResponseDictionaryBlock)block error:(MOErrorBlock)errorBlock;
+- (void)loadReceiptsOnSuccess:(MOResponseArrayBlock)block error:(MOErrorBlock)errorBlock;
 
 /**
  Loads history of topping the Wallet
