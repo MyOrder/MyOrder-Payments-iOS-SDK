@@ -13,5 +13,6 @@
 @interface MOIdealTransactionView : MOTransactionView
 
 @property (nonatomic, strong, readonly) MOIdealTransaction *transaction;
+@property (nonatomic, copy) dispatch_block_t onIssuerChange;
 
 @end

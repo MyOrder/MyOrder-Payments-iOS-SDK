@@ -9,13 +9,14 @@
 #import "MOExampleViewController.h"
 #import "MOLoginViewController.h"
 #import "MyOrder.h"
-#import "SVProgressHUD.h"
+#import "MOProgressHUD.h"
 #import "MORegisterViewController.h"
 #import "MOTransactionViewController.h"
 #import "MOOrder.h"
 #import "UIColor+MOAppearance.h"
-#import "SVProgressHUD+MOAppearance.h"
 #import "MOProvidersViewController.h"
+
+//#define paymentType @"iDeal"
 
 @interface MOExampleViewController () <UITextFieldDelegate>
 
@@ -49,7 +50,7 @@
     [self configureButtons];
 }
 
-- (IBAction)loginAction:(id)sender {
+- (IBAction)loginAction:(id)sender {    
     MOLoginViewController *loginVC = [[MOLoginViewController alloc] init];
     loginVC.allowAutomaticLogin = NO;
     [self.navigationController pushViewController:loginVC animated:YES];
@@ -57,12 +58,12 @@
 
 
 - (IBAction)autoLoginAction:(id)sender {
-    [SVProgressHUD show];
+    [MOProgressHUD show];
     [[MyOrder shared] loginOnSuccess:^{
-        [SVProgressHUD dismiss];
+        [MOProgressHUD dismiss];
         [self configureButtons];
     } error:^(NSError *error){
-        [SVProgressHUD MO_showError:error];
+        [MOProgressHUD showError:error];
         [self configureButtons];
     }];
 }
@@ -82,19 +83,59 @@
     order.externalOrderId = @"123456";
     [order addItemWithName:@"MyOrder demo item" price:2.25 quantity:2];
     
+#ifndef paymentType
+    //Generic way to start payments
     UIViewController *vc = [[MyOrder shared] paymentViewControllerForOrder:order forceLogin:self.forceLoginSwitch.isOn onCompletion:^{
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
     [self.navigationController pushViewController:vc animated:YES];
+    
+#else
+    //Custom way to start a particular payment and add blocks
+    MOTransactionViewController *transactionVC = [[MyOrder shared] transactionViewControllerForProvider:paymentType];
+    transactionVC.transaction.order = order;
+    transactionVC.startBlock = ^(MOTransactionViewController *vc) {
+        //Custom logic to control whether the transaction is ready
+        return YES;
+    };
+    transactionVC.completionBlock = ^(MOTransactionViewController *vc) {
+        [[[UIAlertView alloc] initWithTitle:nil message:@"Completed" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [vc.navigationController popToRootViewControllerAnimated:YES];
+    };
+    transactionVC.cancelBlock = ^(MOTransactionViewController *vc) {
+        [[[UIAlertView alloc] initWithTitle:nil message:@"Canceled" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [vc.navigationController popToRootViewControllerAnimated:YES];
+    };
+    transactionVC.errorBlock = ^(MOTransactionViewController *vc, NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:nil message:@"Error" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [vc.navigationController popToRootViewControllerAnimated:YES];
+    };
+    [transactionVC startInNavigationController:self.navigationController];
+#endif
+    
+}
+
+- (IBAction)receiptsAction:(id)sender {
+    UIViewController *vc = [[MyOrder shared] receiptsViewController];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (IBAction)walletHistoryAction:(id)sender {
+//    [[MyOrder shared] loadWalletHistoryOnSuccess:^(NSDictionary *response) {
+//        
+//    } error:^(NSError *error) {
+//        
+//    }];
 }
 
 - (IBAction)logoutAction:(id)sender {
-    [SVProgressHUD show];
+    [MOProgressHUD show];
     [[MyOrder shared] logoutOnSuccess:^{
-        [SVProgressHUD dismiss];
+        [MOProgressHUD dismiss];
         [self configureButtons];
     } error:^(NSError *error){
-        [SVProgressHUD MO_showError:error];
+        [MOProgressHUD showError:error];
     }];
 }
 
@@ -102,16 +143,20 @@
     if ([sender isOn]) {
         [UIColor MO_setBackgroundColor:[UIColor brownColor]];
         [UIColor MO_setSectionBorderColor:[UIColor blackColor]];
-        [UIColor MO_setTextFieldTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0 alpha:1]];
+        [UIColor MO_setTextFieldTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0 alpha:1]];
+        [UIColor MO_setTextFieldBackgroundColor:[UIColor colorWithWhite:0.8 alpha:1]];
         [UIColor MO_setTextColor:[UIColor colorWithRed:0.9 green:0.8 blue:0.8 alpha:1]];
-        [UIColor MO_setButtonTextColor:[UIColor redColor]];
+        [UIColor MO_setButtonBackgroundColor:[UIColor colorWithWhite:0.8 alpha:1]];
+        [UIColor MO_setButtonTextColor:[UIColor blackColor]];
         [UIColor MO_setLinkTextColor:[UIColor orangeColor]];
     }
     else {
         [UIColor MO_setBackgroundColor:nil];
         [UIColor MO_setSectionBorderColor:nil];
-        [UIColor MO_setTextFieldTitleColor:nil];
+        [UIColor MO_setTextFieldTextColor:nil];
+        [UIColor MO_setTextFieldBackgroundColor:nil];
         [UIColor MO_setTextColor:nil];
+        [UIColor MO_setButtonBackgroundColor:nil];
         [UIColor MO_setButtonTextColor:nil];
         [UIColor MO_setLinkTextColor:nil];
     }

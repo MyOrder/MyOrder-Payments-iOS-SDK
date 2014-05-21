@@ -10,8 +10,10 @@
 
 @interface MOTextField : UITextField
 
-@property (nonatomic, strong) UILabel *titleLabel;
-@property(nonatomic, assign) UITextField *nextTextField;
+//@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, assign) UITextField *nextTextField;
+@property (nonatomic, assign) CGFloat leftPadding;
 
 - (void)sizeToFitCell:(UITableViewCell *)cell;
 

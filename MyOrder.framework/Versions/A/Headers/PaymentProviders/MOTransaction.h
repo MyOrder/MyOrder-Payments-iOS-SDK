@@ -75,6 +75,7 @@ extern const NSString *MOTransactionProviderDescription;
  @param errorBlock Error Block
  */
 - (void)fillWalletOnConfirmation:(MOPluginBlock)confirmationBlock onSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
+
 /**
  Start payment transaction with MOOrder object to make a payment (placeOrder)
  @param confirmationBlock Block that will be called on intermediate process (confirmation)
@@ -82,6 +83,14 @@ extern const NSString *MOTransactionProviderDescription;
  @param errorBlock Error Block
  */
 - (void)placeOrderOnConfirmation:(MOPluginBlock)confirmationBlock onSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
+
+/**
+ Returns a BOOL indicating if the URL has been handled by the transaction. By default returns NO.
+ @param url NSURL to handle.
+ @returns BOOL YES if the URL has been handled
+ */
+- (BOOL)handleURL:(NSURL *)url;
+
 
 @end
 
@@ -101,5 +110,6 @@ extern const NSString *MOTransactionProviderDescription;
 
 /** Description to use in the receipt details. Only used by some transactions (iDeal) */
 @property (nonatomic, strong) NSString *description;
+
 
 @end

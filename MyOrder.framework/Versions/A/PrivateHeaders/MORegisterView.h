@@ -18,6 +18,7 @@ typedef void(^MOConditionsBlock)(MOConditionsType conditions);
 @interface MORegisterView : UIScrollView
 
 @property (nonatomic, strong) UISwitch *conditionsSwitch;
+@property (nonatomic, copy) dispatch_block_t onNext;
 @property (nonatomic, copy) MOConditionsBlock onConditions;
 @property (nonatomic, readonly) NSString *phone;
 

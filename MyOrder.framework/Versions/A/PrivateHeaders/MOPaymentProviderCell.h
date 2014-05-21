@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) NSDictionary *providerInfo;
 @property (nonatomic, assign) BOOL isExpanded;
-@property (nonatomic, strong) NSNumber *walletAmount;
 
 + (CGFloat)heightOfCell:(BOOL)isExpanded;
 

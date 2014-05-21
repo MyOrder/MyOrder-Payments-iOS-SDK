@@ -10,6 +10,7 @@
 #import "MOErrorCodes.h"
 #import "MOApiConnection.h"
 #import "MOTransaction.h"
+#import "MOPaymentOperation.h"
 
 @class MOTransactionViewController;
 
@@ -51,6 +52,10 @@ typedef enum MyOrderEnvironment
 /** Payment description to use in transaction operations that allows customization (Ex: iDeal). Defaults to app name */
 @property (nonatomic, strong) NSString *defaultMerchantDescription;
 
+/** URL Scheme used by the app. Required for some payment methods (Ex: iDeal). Defaults to nil */
+@property (nonatomic, strong) NSString *URLScheme;
+
+
 /**
  @name Readonly properties
  */
@@ -64,8 +69,18 @@ typedef enum MyOrderEnvironment
 /** Returns the current transaction started with newTransactionForProvider: */
 @property (nonatomic, strong, readonly) id<MOTransactionProtocol> currentTransaction;
 
+/** List of available payment operations names in MyOrder library */
+@property (nonatomic, strong, readonly) NSArray *availablePaymentOperations;
+
+/** List of payment options configured by configureWithPaymentOptions: */
+@property (nonatomic, strong, readonly) NSArray *configuredPaymentOperations;
+
+
 /** Returns the current balance in euros retrieved by updateBalanceOnSuccess:error:. nil if the balance has not been retrieved yet */
 @property (nonatomic, strong, readonly) NSNumber *balance;
+
+/** Returns the last receipts retrieved by updateReceiptsOnSuccess:error:. nil if the receipts have not been retrieved yet */
+@property (nonatomic, strong, readonly) NSArray *receipts;
 
 
 /**
@@ -84,6 +99,13 @@ typedef enum MyOrderEnvironment
 - (void)configureWithPaymentProviders:(NSArray *)providers;
 
 /**
+ Customize available options
+ @param options List of payment options names, NSString.
+ */
+- (void)configureWithPaymentOperations:(NSArray *)operations;
+
+
+/**
  Create a new transaction for a payment provider
  @param providerName NSString of provider name.
  @returns New transaction instance
@@ -98,17 +120,41 @@ typedef enum MyOrderEnvironment
  */
 - (NSDictionary *)transactionInfoForProvider:(NSString *)providerName;
 
+/**
+ Returns the operation information related to a particular operation name
+ @param operationName NSString of operation name.
+ @returns NSDictionary with operation information for the particular name
+ */
+- (NSDictionary *)infoForOperation:(NSString *)operationName;
+
+
+/**
+ Returns a BOOL indicating if the URL has been handled by MyOrder. Some payment methods (like iDeal) require this method to be implemented.
+ @param url NSURL received in - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation method.
+ @returns BOOL YES if the URL has been handled
+ */
+- (BOOL)handleURL:(NSURL *)url;
+
 @end
 
 
 @interface MyOrder (UI)
 
 /**
- Returns the transaction UIViewController related to a particular provider
+ Returns the transaction UIViewController related to a particular provider. If the controller is meant to be used for payments, you need to pass the MOOrder to the  vc.transaction.order, otherwise the operation will try to fill your wallet
  @param providerName NSString of provider name.
  @returns UIViewController for specific transaction
  */
 - (MOTransactionViewController *)transactionViewControllerForProvider:(NSString *)providerName;
+
+
+/**
+ Returns the UIViewController related to a particular payment operation
+ @param operationName NSString of operation name.
+ @returns UIViewController for specific transaction
+ */
+- (UIViewController *)operationViewControllerForPaymentOperation:(NSString *)operationName;
+
 
 /**
  Creates and returns a UIViewController with the users wallet and payment methods. Note that some payment providers can be used without login as long as the mobile phone is set
@@ -126,10 +172,18 @@ typedef enum MyOrderEnvironment
  */
 - (UIViewController *)paymentViewControllerForOrder:(MOOrder *)order forceLogin:(BOOL)forceLogin onCompletion:(dispatch_block_t)completionBlock;
 
+
+/**
+ Creates and returns a UIViewController with the receipts list of the user
+ @returns UIViewController for receipts
+ */
+- (UIViewController *)receiptsViewController;
+
+
 @end
 
 
-@interface MyOrder (Authentication)
+@interface MyOrder (API)
 
 /**
  Returns a BOOL indicating if the user has is logged in
@@ -171,6 +225,14 @@ Returns a BOOL indicating if the user has been loggedIn before and saved his cre
  */
 - (void)logoutOnSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock;
 
+
+/**
+ Check if the provided phone number is a register user or not
+ @param block Block executed when the user exists
+ @param errorBlock Block executed when user is not register or error happens
+ */
+- (void)userExistsOnSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock;
+
 /**
  Starts the registration of a new mobile phone number. The process needs to be verified with a SMS code before the account is actived with verifyRegistrationWithActivationCode:newPassword:onSuccess:error:. Note that the mobilePhone is set as a property in MyOrder instance.
  @param force BOOL indicating if the user registration can succed even if it exists
@@ -191,7 +253,7 @@ Returns a BOOL indicating if the user has been loggedIn before and saved his cre
 - (void)verifyRegistrationWithActivationCode:(NSString *)activationCode newPassword:(NSString *)password onSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock;
 
 /**
- Set a new user's password
+ Set a new user's password. It requires user to be logged in
  @param password New password to set for the user's account
  @param block Block executed when the update finishes successfully
  @param errorBlock Block executed when an error occurs
@@ -231,7 +293,7 @@ Returns a BOOL indicating if the user has been loggedIn before and saved his cre
  @param block Block executed when the history is loaded. Contains parsed MOReceipts
  @param errorBlock Block executed when an error occurs
  */
-- (void)loadReceiptsOnSuccess:(MOResponseArrayBlock)block error:(MOErrorBlock)errorBlock;
+- (void)updateReceiptsOnSuccess:(MOResponseArrayBlock)block error:(MOErrorBlock)errorBlock;
 
 /**
  Loads history of topping the Wallet

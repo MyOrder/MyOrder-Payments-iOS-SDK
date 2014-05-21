@@ -24,5 +24,15 @@
 /** Bool number indicating if should save the credit card */
 @property (nonatomic, strong) NSNumber *saveAlias;
 
+/** String indicating the last saved alias laoded with loadSavedAliasOnSuccess:error: */
+@property (nonatomic, strong) NSString *savedAlias;
+
+
+/** Load a previously saved card
+ @param block Success block
+ @param errorBlock Error block
+ */
+- (void)loadSavedAliasOnSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
+
 
 @end

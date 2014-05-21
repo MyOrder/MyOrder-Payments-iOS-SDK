@@ -3,5 +3,6 @@ inhibit_all_warnings!
 
 pod 'SVProgressHUD'
 pod 'TPKeyboardAvoiding'
-pod 'PayPalMPL', '~>2.1.0'
+#pod 'PayPalMPL'
+pod 'PayPalMPL', podspec: 'https://raw.githubusercontent.com/xslim/CustomSpecs/master/PayPalMPL.podspec'
 pod 'CardIO'

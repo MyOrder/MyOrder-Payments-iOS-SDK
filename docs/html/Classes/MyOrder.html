@@ -38,13 +38,19 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/URLScheme">&nbsp;&nbsp;&nbsp;&nbsp;URLScheme</option>
+	
 	<option value="//api/name/apiKey">&nbsp;&nbsp;&nbsp;&nbsp;apiKey</option>
 	
 	<option value="//api/name/apiSecret">&nbsp;&nbsp;&nbsp;&nbsp;apiSecret</option>
 	
+	<option value="//api/name/availablePaymentOperations">&nbsp;&nbsp;&nbsp;&nbsp;availablePaymentOperations</option>
+	
 	<option value="//api/name/availablePaymentProviders">&nbsp;&nbsp;&nbsp;&nbsp;availablePaymentProviders</option>
 	
 	<option value="//api/name/balance">&nbsp;&nbsp;&nbsp;&nbsp;balance</option>
+	
+	<option value="//api/name/configuredPaymentOperations">&nbsp;&nbsp;&nbsp;&nbsp;configuredPaymentOperations</option>
 	
 	<option value="//api/name/configuredPaymentProviders">&nbsp;&nbsp;&nbsp;&nbsp;configuredPaymentProviders</option>
 	
@@ -54,7 +60,13 @@
 	
 	<option value="//api/name/environment">&nbsp;&nbsp;&nbsp;&nbsp;environment</option>
 	
+	<option value="//api/name/isLoggedIn">&nbsp;&nbsp;&nbsp;&nbsp;isLoggedIn</option>
+	
 	<option value="//api/name/phoneNumber">&nbsp;&nbsp;&nbsp;&nbsp;phoneNumber</option>
+	
+	<option value="//api/name/receipts">&nbsp;&nbsp;&nbsp;&nbsp;receipts</option>
+	
+	<option value="//api/name/sessionId">&nbsp;&nbsp;&nbsp;&nbsp;sessionId</option>
 	
 	
 	
@@ -68,13 +80,15 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/configureWithPaymentOperations:">&nbsp;&nbsp;&nbsp;&nbsp;- configureWithPaymentOperations:</option>
+	
 	<option value="//api/name/configureWithPaymentProviders:">&nbsp;&nbsp;&nbsp;&nbsp;- configureWithPaymentProviders:</option>
+	
+	<option value="//api/name/handleURL:">&nbsp;&nbsp;&nbsp;&nbsp;- handleURL:</option>
 	
 	<option value="//api/name/hasSavedCredentials">&nbsp;&nbsp;&nbsp;&nbsp;- hasSavedCredentials</option>
 	
-	<option value="//api/name/isLoggedIn">&nbsp;&nbsp;&nbsp;&nbsp;- isLoggedIn</option>
-	
-	<option value="//api/name/loadPurchaseHistoryOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- loadPurchaseHistoryOnSuccess:error:</option>
+	<option value="//api/name/infoForOperation:">&nbsp;&nbsp;&nbsp;&nbsp;- infoForOperation:</option>
 	
 	<option value="//api/name/loadWalletHistoryOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- loadWalletHistoryOnSuccess:error:</option>
 	
@@ -86,7 +100,11 @@
 	
 	<option value="//api/name/newTransactionForProvider:">&nbsp;&nbsp;&nbsp;&nbsp;- newTransactionForProvider:</option>
 	
+	<option value="//api/name/operationViewControllerForPaymentOperation:">&nbsp;&nbsp;&nbsp;&nbsp;- operationViewControllerForPaymentOperation:</option>
+	
 	<option value="//api/name/paymentViewControllerForOrder:forceLogin:onCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- paymentViewControllerForOrder:forceLogin:onCompletion:</option>
+	
+	<option value="//api/name/receiptsViewController">&nbsp;&nbsp;&nbsp;&nbsp;- receiptsViewController</option>
 	
 	<option value="//api/name/registerUser:onSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- registerUser:onSuccess:error:</option>
 	
@@ -99,6 +117,10 @@
 	<option value="//api/name/updateBalanceOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- updateBalanceOnSuccess:error:</option>
 	
 	<option value="//api/name/updatePassword:onSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- updatePassword:onSuccess:error:</option>
+	
+	<option value="//api/name/updateReceiptsOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- updateReceiptsOnSuccess:error:</option>
+	
+	<option value="//api/name/userExistsOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- userExistsOnSuccess:error:</option>
 	
 	<option value="//api/name/verifyEmailWithRequestId:confirmationCode:onSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- verifyEmailWithRequestId:confirmationCode:onSuccess:error:</option>
 	
@@ -126,7 +148,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Generic methods">Generic methods</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Authentication Methods">Authentication Methods</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_API Methods">API Methods</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_UI Methods">UI Methods</a></span></li>
 	
@@ -138,13 +160,19 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/URLScheme">URLScheme</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/apiKey">apiKey</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/apiSecret">apiSecret</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availablePaymentOperations">availablePaymentOperations</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availablePaymentProviders">availablePaymentProviders</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/balance">balance</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configuredPaymentOperations">configuredPaymentOperations</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configuredPaymentProviders">configuredPaymentProviders</a></span></li>
 	
@@ -154,7 +182,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/environment">environment</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLoggedIn">isLoggedIn</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/phoneNumber">phoneNumber</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receipts">receipts</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sessionId">sessionId</a></span></li>
 	
 </ul></li>
 
@@ -170,13 +204,15 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configureWithPaymentOperations:">configureWithPaymentOperations:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configureWithPaymentProviders:">configureWithPaymentProviders:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleURL:">handleURL:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasSavedCredentials">hasSavedCredentials</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLoggedIn">isLoggedIn</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadPurchaseHistoryOnSuccess:error:">loadPurchaseHistoryOnSuccess:error:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/infoForOperation:">infoForOperation:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadWalletHistoryOnSuccess:error:">loadWalletHistoryOnSuccess:error:</a></span></li>
 	
@@ -188,7 +224,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/newTransactionForProvider:">newTransactionForProvider:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationViewControllerForPaymentOperation:">operationViewControllerForPaymentOperation:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentViewControllerForOrder:forceLogin:onCompletion:">paymentViewControllerForOrder:forceLogin:onCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptsViewController">receiptsViewController</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerUser:onSuccess:error:">registerUser:onSuccess:error:</a></span></li>
 	
@@ -201,6 +241,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateBalanceOnSuccess:error:">updateBalanceOnSuccess:error:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updatePassword:onSuccess:error:">updatePassword:onSuccess:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateReceiptsOnSuccess:error:">updateReceiptsOnSuccess:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userExistsOnSuccess:error:">userExistsOnSuccess:error:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/verifyEmailWithRequestId:confirmationCode:onSuccess:error:">verifyEmailWithRequestId:confirmationCode:onSuccess:error:</a></span></li>
 	
@@ -288,6 +332,13 @@
 	</span>
 	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/URLScheme">&nbsp;&nbsp;URLScheme</a></code>
+		<span class="tooltip"><p>URL Scheme used by the app. Required for some payment methods (Ex: iDeal). Defaults to nil</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
 </li>
 						</ul>
 						
@@ -319,8 +370,29 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/availablePaymentOperations">&nbsp;&nbsp;availablePaymentOperations</a></code>
+		<span class="tooltip"><p>List of available payment operations names in MyOrder library</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/configuredPaymentOperations">&nbsp;&nbsp;configuredPaymentOperations</a></code>
+		<span class="tooltip"><p>List of payment options configured by configureWithPaymentOptions:</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/balance">&nbsp;&nbsp;balance</a></code>
 		<span class="tooltip"><p>Returns the current balance in euros retrieved by <a href="#//api/name/updateBalanceOnSuccess:error:">updateBalanceOnSuccess:error:</a>. nil if the balance has not been retrieved yet</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receipts">&nbsp;&nbsp;receipts</a></code>
+		<span class="tooltip"><p>Returns the last receipts retrieved by <a href="#//api/name/updateReceiptsOnSuccess:error:">updateReceiptsOnSuccess:error:</a>. nil if the receipts have not been retrieved yet</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -348,6 +420,13 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/configureWithPaymentOperations:">&ndash;&nbsp;configureWithPaymentOperations:</a></code>
+		<span class="tooltip"><p>Customize available options</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/newTransactionForProvider:">&ndash;&nbsp;newTransactionForProvider:</a></code>
 		<span class="tooltip"><p>Create a new transaction for a payment provider</p></span>
 	</span>
@@ -360,25 +439,46 @@
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						<a title="Authentication Methods" name="task_Authentication Methods"></a>
-						<h3 class="subsubtitle task-title">Authentication Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/hasSavedCredentials">&ndash;&nbsp;hasSavedCredentials</a></code>
-		<span class="tooltip"><p>Returns a BOOL indicating if the user has been loggedIn before and saved his credentials for future logins. If YES, then the login can potentially be done without password.</p></span>
+		<code><a href="#//api/name/infoForOperation:">&ndash;&nbsp;infoForOperation:</a></code>
+		<span class="tooltip"><p>Returns the operation information related to a particular operation name</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/isLoggedIn">&ndash;&nbsp;isLoggedIn</a></code>
+		<code><a href="#//api/name/handleURL:">&ndash;&nbsp;handleURL:</a></code>
+		<span class="tooltip"><p>Returns a BOOL indicating if the URL has been handled by MyOrder. Some payment methods (like iDeal) require this method to be implemented.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="API Methods" name="task_API Methods"></a>
+						<h3 class="subsubtitle task-title">API Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isLoggedIn">&nbsp;&nbsp;isLoggedIn</a></code>
 		<span class="tooltip"><p>Returns a BOOL indicating if the user has is logged in</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sessionId">&nbsp;&nbsp;sessionId</a></code>
+		<span class="tooltip"><p>Returns a String with the MyOrder Session Id</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasSavedCredentials">&ndash;&nbsp;hasSavedCredentials</a></code>
+		<span class="tooltip"><p>Returns a BOOL indicating if the user has been loggedIn before and saved his credentials for future logins. If YES, then the login can potentially be done without password.</p></span>
 	</span>
 	
 	
@@ -405,6 +505,13 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/userExistsOnSuccess:error:">&ndash;&nbsp;userExistsOnSuccess:error:</a></code>
+		<span class="tooltip"><p>Check if the provided phone number is a register user or not</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/registerUser:onSuccess:error:">&ndash;&nbsp;registerUser:onSuccess:error:</a></code>
 		<span class="tooltip"><p>Starts the registration of a new mobile phone number. The process needs to be verified with a SMS code before the account is actived with <a href="#//api/name/verifyRegistrationWithActivationCode:newPassword:onSuccess:error:">verifyRegistrationWithActivationCode:newPassword:onSuccess:error:</a>. Note that the mobilePhone is set as a property in MyOrder instance.</p></span>
 	</span>
@@ -420,7 +527,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/updatePassword:onSuccess:error:">&ndash;&nbsp;updatePassword:onSuccess:error:</a></code>
-		<span class="tooltip"><p>Set a new user&rsquo;s password</p></span>
+		<span class="tooltip"><p>Set a new user&rsquo;s password. It requires user to be logged in</p></span>
 	</span>
 	
 	
@@ -447,8 +554,8 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/loadPurchaseHistoryOnSuccess:error:">&ndash;&nbsp;loadPurchaseHistoryOnSuccess:error:</a></code>
-		<span class="tooltip"><p>Loads Purchase history</p></span>
+		<code><a href="#//api/name/updateReceiptsOnSuccess:error:">&ndash;&nbsp;updateReceiptsOnSuccess:error:</a></code>
+		<span class="tooltip"><p>Loads Purchase history and returns MOReceipts</p></span>
 	</span>
 	
 	
@@ -470,7 +577,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/transactionViewControllerForProvider:">&ndash;&nbsp;transactionViewControllerForProvider:</a></code>
-		<span class="tooltip"><p>Returns the transaction UIViewController related to a particular provider</p></span>
+		<span class="tooltip"><p>Returns the transaction UIViewController related to a particular provider. If the controller is meant to be used for payments, you need to pass the <a href="../Classes/MOOrder.html">MOOrder</a> to the  vc.transaction.order, otherwise the operation will try to fill your wallet</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operationViewControllerForPaymentOperation:">&ndash;&nbsp;operationViewControllerForPaymentOperation:</a></code>
+		<span class="tooltip"><p>Returns the UIViewController related to a particular payment operation</p></span>
 	</span>
 	
 	
@@ -488,6 +602,13 @@
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptsViewController">&ndash;&nbsp;receiptsViewController</a></code>
+		<span class="tooltip"><p>Creates and returns a UIViewController with the <a href="#//api/name/receipts">receipts</a> list of the user</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -500,6 +621,47 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/URLScheme" title="URLScheme"></a>
+	<h3 class="subsubtitle method-title">URLScheme</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>URL Scheme used by the app. Required for some payment methods (Ex: iDeal). Defaults to nil</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *URLScheme</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>URL Scheme used by the app. Required for some payment methods (Ex: iDeal). Defaults to nil</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/apiKey" title="apiKey"></a>
@@ -584,6 +746,47 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/availablePaymentOperations" title="availablePaymentOperations"></a>
+	<h3 class="subsubtitle method-title">availablePaymentOperations</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>List of available payment operations names in MyOrder library</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *availablePaymentOperations</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>List of available payment operations names in MyOrder library</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/availablePaymentProviders" title="availablePaymentProviders"></a>
 	<h3 class="subsubtitle method-title">availablePaymentProviders</h3>
 	
@@ -649,6 +852,47 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the current balance in euros retrieved by <a href="#//api/name/updateBalanceOnSuccess:error:">updateBalanceOnSuccess:error:</a>. nil if the balance has not been retrieved yet</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/configuredPaymentOperations" title="configuredPaymentOperations"></a>
+	<h3 class="subsubtitle method-title">configuredPaymentOperations</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>List of payment options configured by configureWithPaymentOptions:</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *configuredPaymentOperations</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>List of payment options configured by configureWithPaymentOptions:</p>
 	</div>
 	
 	
@@ -830,6 +1074,47 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/isLoggedIn" title="isLoggedIn"></a>
+	<h3 class="subsubtitle method-title">isLoggedIn</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a BOOL indicating if the user has is logged in</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isLoggedIn</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a BOOL indicating if the user has is logged in</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/phoneNumber" title="phoneNumber"></a>
 	<h3 class="subsubtitle method-title">phoneNumber</h3>
 	
@@ -854,6 +1139,88 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>User&rsquo;s phone number used in all login and transaction operations</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receipts" title="receipts"></a>
+	<h3 class="subsubtitle method-title">receipts</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the last receipts retrieved by <a href="#//api/name/updateReceiptsOnSuccess:error:">updateReceiptsOnSuccess:error:</a>. nil if the receipts have not been retrieved yet</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *receipts</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the last receipts retrieved by <a href="#//api/name/updateReceiptsOnSuccess:error:">updateReceiptsOnSuccess:error:</a>. nil if the receipts have not been retrieved yet</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sessionId" title="sessionId"></a>
+	<h3 class="subsubtitle method-title">sessionId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a String with the MyOrder Session Id</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *sessionId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a String with the MyOrder Session Id</p>
 	</div>
 	
 	
@@ -928,6 +1295,57 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/configureWithPaymentOperations:" title="configureWithPaymentOperations:"></a>
+	<h3 class="subsubtitle method-title">configureWithPaymentOperations:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Customize available options</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)configureWithPaymentOperations:(NSArray *)<em>operations</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>List of payment options names, NSString.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Customize available options</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/configureWithPaymentProviders:" title="configureWithPaymentProviders:"></a>
 	<h3 class="subsubtitle method-title">configureWithPaymentProviders:</h3>
 	
@@ -962,6 +1380,62 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Customize available providers</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/handleURL:" title="handleURL:"></a>
+	<h3 class="subsubtitle method-title">handleURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a BOOL indicating if the URL has been handled by MyOrder. Some payment methods (like iDeal) require this method to be implemented.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)handleURL:(NSURL *)<em>url</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>NSURL received in &ndash; (BOOL)application:(UIApplication <em>)application openURL:(NSURL </em>)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation method.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>BOOL YES if the URL has been handled</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a BOOL indicating if the URL has been handled by MyOrder. Some payment methods (like iDeal) require this method to be implemented.</p>
 	</div>
 	
 	
@@ -1025,64 +1499,18 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/isLoggedIn" title="isLoggedIn"></a>
-	<h3 class="subsubtitle method-title">isLoggedIn</h3>
+	<a name="//api/name/infoForOperation:" title="infoForOperation:"></a>
+	<h3 class="subsubtitle method-title">infoForOperation:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns a BOOL indicating if the user has is logged in</p>
+		<p>Returns the operation information related to a particular operation name</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)isLoggedIn</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if user is logged in.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a BOOL indicating if the user has is logged in</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MyOrder.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/loadPurchaseHistoryOnSuccess:error:" title="loadPurchaseHistoryOnSuccess:error:"></a>
-	<h3 class="subsubtitle method-title">loadPurchaseHistoryOnSuccess:error:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Loads Purchase history</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)loadPurchaseHistoryOnSuccess:(MOResponseDictionaryBlock)<em>block</em> error:(MOErrorBlock)<em>errorBlock</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)infoForOperation:(NSString *)<em>operationName</em></code></div>
 
     
 	
@@ -1090,18 +1518,18 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>Block executed when the history is loaded</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>errorBlock</em></dt>
-			<dd><p>Block executed when an error occurs</p></dd>
+			<dt><em>operationName</em></dt>
+			<dd><p>NSString of operation name.</p></dd>
 		</dl>
 		
 	</div>
 	
 	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSDictionary with operation information for the particular name</p>
+	</div>
 	
 	
 	
@@ -1109,7 +1537,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Loads Purchase history</p>
+		<p>Returns the operation information related to a particular operation name</p>
 	</div>
 	
 	
@@ -1417,6 +1845,62 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/operationViewControllerForPaymentOperation:" title="operationViewControllerForPaymentOperation:"></a>
+	<h3 class="subsubtitle method-title">operationViewControllerForPaymentOperation:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the UIViewController related to a particular payment operation</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIViewController *)operationViewControllerForPaymentOperation:(NSString *)<em>operationName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operationName</em></dt>
+			<dd><p>NSString of operation name.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>UIViewController for specific transaction</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the UIViewController related to a particular payment operation</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/paymentViewControllerForOrder:forceLogin:onCompletion:" title="paymentViewControllerForOrder:forceLogin:onCompletion:"></a>
 	<h3 class="subsubtitle method-title">paymentViewControllerForOrder:forceLogin:onCompletion:</h3>
 	
@@ -1466,6 +1950,52 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Creates and returns a UIViewController for selecting payment options for a specific order. Note that some payment providers can be used without login as long as the mobile phone is set</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptsViewController" title="receiptsViewController"></a>
+	<h3 class="subsubtitle method-title">receiptsViewController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a UIViewController with the <a href="#//api/name/receipts">receipts</a> list of the user</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIViewController *)receiptsViewController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>UIViewController for <a href="#//api/name/receipts">receipts</a></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates and returns a UIViewController with the <a href="#//api/name/receipts">receipts</a> list of the user</p>
 	</div>
 	
 	
@@ -1685,7 +2215,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the transaction UIViewController related to a particular provider</p>
+		<p>Returns the transaction UIViewController related to a particular provider. If the controller is meant to be used for payments, you need to pass the <a href="../Classes/MOOrder.html">MOOrder</a> to the  vc.transaction.order, otherwise the operation will try to fill your wallet</p>
 	</div>		
 	
     
@@ -1717,7 +2247,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the transaction UIViewController related to a particular provider</p>
+		<p>Returns the transaction UIViewController related to a particular provider. If the controller is meant to be used for payments, you need to pass the <a href="../Classes/MOOrder.html">MOOrder</a> to the  vc.transaction.order, otherwise the operation will try to fill your wallet</p>
 	</div>
 	
 	
@@ -1797,7 +2327,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set a new user&rsquo;s password</p>
+		<p>Set a new user&rsquo;s password. It requires user to be logged in</p>
 	</div>		
 	
     
@@ -1834,7 +2364,119 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Set a new user&rsquo;s password</p>
+		<p>Set a new user&rsquo;s password. It requires user to be logged in</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updateReceiptsOnSuccess:error:" title="updateReceiptsOnSuccess:error:"></a>
+	<h3 class="subsubtitle method-title">updateReceiptsOnSuccess:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Loads Purchase history and returns MOReceipts</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)updateReceiptsOnSuccess:(MOResponseArrayBlock)<em>block</em> error:(MOErrorBlock)<em>errorBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Block executed when the history is loaded. Contains parsed MOReceipts</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>errorBlock</em></dt>
+			<dd><p>Block executed when an error occurs</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Loads Purchase history and returns MOReceipts</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MyOrder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userExistsOnSuccess:error:" title="userExistsOnSuccess:error:"></a>
+	<h3 class="subsubtitle method-title">userExistsOnSuccess:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if the provided phone number is a register user or not</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)userExistsOnSuccess:(MOBlock)<em>block</em> error:(MOErrorBlock)<em>errorBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Block executed when the user exists</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>errorBlock</em></dt>
+			<dd><p>Block executed when user is not register or error happens</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Check if the provided phone number is a register user or not</p>
 	</div>
 	
 	
@@ -2061,7 +2703,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Xaton B.V.. All rights reserved. (Last updated: 2013-12-11)</span><br />
+						<p><span class="copyright">&copy; 2014 Xaton B.V.. All rights reserved. (Last updated: 2014-05-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
