@@ -75,6 +75,7 @@ extern const NSString *MOTransactionProviderDescription;
  @param errorBlock Error Block
  */
 - (void)fillWalletOnConfirmation:(MOPluginBlock)confirmationBlock onSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
+
 /**
  Start payment transaction with MOOrder object to make a payment (placeOrder)
  @param confirmationBlock Block that will be called on intermediate process (confirmation)
@@ -82,6 +83,14 @@ extern const NSString *MOTransactionProviderDescription;
  @param errorBlock Error Block
  */
 - (void)placeOrderOnConfirmation:(MOPluginBlock)confirmationBlock onSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
+
+/**
+ Returns a BOOL indicating if the URL has been handled by the transaction. By default returns NO.
+ @param url NSURL to handle.
+ @returns BOOL YES if the URL has been handled
+ */
+- (BOOL)handleURL:(NSURL *)url;
+
 
 @end
 
@@ -92,48 +101,15 @@ extern const NSString *MOTransactionProviderDescription;
 /**
  The ammount to charge in a wallet operation in euros
  */
-@property (nonatomic, assign) CGFloat walletAmmount;
+@property (nonatomic, assign) double walletAmmount;
 
 /**
  MOOrder to use for placing order. Required when placeOrder method called
  */
 @property (nonatomic, strong) MOOrder *order;
 
-/**
- The id of the successful order when a placeOrder operation finishes
- */
-@property (nonatomic, readonly, strong) NSString *orderId;
-
 /** Description to use in the receipt details. Only used by some transactions (iDeal) */
 @property (nonatomic, strong) NSString *description;
 
-
-/** Internal transaction properties. Only use if want to create new transaction type */
-
-@property (nonatomic, strong) NSString *paymentMethod;
-
-@property (nonatomic, assign, getter = isOpen) BOOL open;
-
-@property (nonatomic, readonly) BOOL isWalletTransaction;
-
-@property (nonatomic, strong) NSString *startTransactionPath;
-@property (nonatomic, strong) NSString *fillWalletPath;
-@property (nonatomic, strong) NSString *placeOrderPath;
-
-@property (nonatomic, strong) NSArray *startTransactionParams;
-@property (nonatomic, strong) NSArray *startTransactionReturnParams;
-@property (nonatomic, strong) NSArray *fillWalletParams;
-@property (nonatomic, strong) NSArray *fillWalletReturnParams;
-@property (nonatomic, strong) NSArray *placeOrderParams;
-@property (nonatomic, strong) NSArray *placeOrderReturnParams;
-
-@property (nonatomic, strong) NSString *placeOrderTransactionKey;
-@property (nonatomic, strong) NSArray *placeOrderTransactionParams;
-
-@property (nonatomic, copy) MOPluginBlock onConfirmationBlock;
-@property (nonatomic, copy) MOPluginBlock onSuccessBlock;
-@property (nonatomic, copy) MOPluginErrorBlock onErrorBlock;
-
-- (void)start;
 
 @end

@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MOReceipt;
 
 @interface MOHistoryDetailsViewController : UIViewController
 
-@property (nonatomic, strong) NSDictionary *itemDictionary;
-
-@property (nonatomic, strong) NSArray *items;
-
+@property (nonatomic, strong) MOReceipt *receipt;
 
 @end

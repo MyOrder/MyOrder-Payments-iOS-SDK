@@ -18,9 +18,6 @@
 /** Request ID */
 @property (nonatomic, strong) NSString *requestId;
 
-/** Bool number indicating if is ment to be an order or a wallet operation */
-@property (nonatomic, strong) NSNumber *isOrder;
-
 /** Check if the OTA module is valid for the logged in user
  @param block Success block (OTA is valid)
  @param errorBlock Error block (OTA not valid)

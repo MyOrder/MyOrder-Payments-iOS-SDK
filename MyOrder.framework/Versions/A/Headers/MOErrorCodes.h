@@ -12,6 +12,7 @@
 #define Pods_MOErrorCodes_h
 
 typedef enum {
+    MOErrorGenericError = 10002,
     MOErrorServerCode = 10001,
     MOErrorNotLoggedIn = 5000,
     MOErrorSessionExpired = 5001,

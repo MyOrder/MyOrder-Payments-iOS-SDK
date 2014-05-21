@@ -19,7 +19,8 @@
     myOrder.apiKey = @"d712d563-d5ed-4826-8920-1b2c2b743ba9";
     myOrder.apiSecret = @"hH3#1PxxS";
     myOrder.environment = MyOrderEnvironmentSandbox;
-        
+    myOrder.URLScheme = @"myorder-sdk";
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     MOExampleViewController *viewController = [[MOExampleViewController alloc] init];
@@ -57,5 +58,10 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[MyOrder shared] handleURL:url];
+}
+
 
 @end

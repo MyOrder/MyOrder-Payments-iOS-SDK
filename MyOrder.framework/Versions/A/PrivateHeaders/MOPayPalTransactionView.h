@@ -10,6 +10,4 @@
 
 @interface MOPayPalTransactionView : MOTransactionView
 
-@property (nonatomic, strong, readwrite) UIButton *confirmButton;
-
 @end

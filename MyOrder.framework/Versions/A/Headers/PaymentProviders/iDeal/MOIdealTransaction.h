@@ -11,12 +11,6 @@
 /** iDeal transaction */
 @interface MOIdealTransaction : MOTransaction
 
-/** Selected Issuer Id */
-@property (nonatomic, strong) NSString *issuerId;
-
-/** Bool number indicating if is ment to be an order or a wallet operation */
-@property (nonatomic, strong) NSNumber *isOrder;
-
 /** Return url to use on the external party service as callback */
 @property (nonatomic, strong) NSString *returnUrl;
 
@@ -26,20 +20,33 @@
 /** Transaction ID */
 @property (nonatomic, strong) NSString *transactionId;
 
+/** Selected Issuer */
+@property (nonatomic, strong) NSDictionary *selectedIssuer;
+
 /** List of issuers */
 @property (nonatomic, strong) NSArray *issuers;
 
 /** Number of minutes to expire the iDeal transaction */
 @property (nonatomic, strong) NSNumber *expirationMinutes;
 
-/** Dictionary with payment parameters retrieved from iDeal */
-@property (nonatomic, strong) NSDictionary *paymentParams;
 
 /** Load all available issuers
  @param block Success block
  @param errorBlock Error block
  */
 - (void)loadIssuersOnSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
+
+/** Check if the ideal transaction status
+ @param block Success block
+ @param errorBlock Error block
+ */
+- (void)checkIdealStatusOnSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
+
+
+/** Returns the default isssuer (last selected issuer)
+ @return NSDictionary with issuer information
+ */
++ (NSDictionary *)defaultIssuer;
 
 
 @end

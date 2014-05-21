@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MOTransaction;
 
 @interface MOTransactionWebViewController : UIViewController <UIWebViewDelegate>
 
+@property (nonatomic, strong) MOTransaction *transaction;
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) NSString *callbackUrl;
 
 
 //TODO: Or delegates would be better?
-@property (nonatomic, copy) void (^completionBlock)(MOTransactionWebViewController *controller, NSDictionary *responseParams);
+@property (nonatomic, copy) void (^completionBlock)(MOTransactionWebViewController *controller);
 
 @end

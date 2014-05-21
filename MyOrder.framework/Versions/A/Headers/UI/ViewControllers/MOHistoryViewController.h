@@ -11,7 +11,4 @@
 
 @interface MOHistoryViewController : MOViewController
 
-@property (nonatomic, assign, getter = isWalletHistory, readonly) BOOL walletHistory;
-
-
 @end
