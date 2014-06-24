@@ -15,8 +15,8 @@
 #import "MOOrder.h"
 #import "UIColor+MOAppearance.h"
 #import "MOProvidersViewController.h"
+#import "MOIdealTransaction.h"
 
-//#define paymentType @"iDeal"
 
 @interface MOExampleViewController () <UITextFieldDelegate>
 
@@ -50,6 +50,9 @@
     [self configureButtons];
 }
 
+#pragma mark - IBActions shown in example
+
+//Perform login manually
 - (IBAction)loginAction:(id)sender {    
     MOLoginViewController *loginVC = [[MOLoginViewController alloc] init];
     loginVC.allowAutomaticLogin = NO;
@@ -57,6 +60,7 @@
 }
 
 
+//Perform automatic login if saved credentials
 - (IBAction)autoLoginAction:(id)sender {
     [MOProgressHUD show];
     [[MyOrder shared] loginOnSuccess:^{
@@ -68,67 +72,7 @@
     }];
 }
 
-- (IBAction)registerAction:(id)sender {
-    UIViewController *vc = [[MORegisterViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (IBAction)walletAction:(id)sender {
-    UIViewController *vc = [[MyOrder shared] walletViewControllerWithLogin:self.forceLoginSwitch.isOn];
-    [self.navigationController pushViewController:vc animated:YES];    
-}
-
-- (IBAction)orderAction:(id)sender {
-    MOOrder *order = [MOOrder new];
-    order.externalOrderId = @"123456";
-    [order addItemWithName:@"MyOrder demo item" price:2.25 quantity:2];
-    
-#ifndef paymentType
-    //Generic way to start payments
-    UIViewController *vc = [[MyOrder shared] paymentViewControllerForOrder:order forceLogin:self.forceLoginSwitch.isOn onCompletion:^{
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-#else
-    //Custom way to start a particular payment and add blocks
-    MOTransactionViewController *transactionVC = [[MyOrder shared] transactionViewControllerForProvider:paymentType];
-    transactionVC.transaction.order = order;
-    transactionVC.startBlock = ^(MOTransactionViewController *vc) {
-        //Custom logic to control whether the transaction is ready
-        return YES;
-    };
-    transactionVC.completionBlock = ^(MOTransactionViewController *vc) {
-        [[[UIAlertView alloc] initWithTitle:nil message:@"Completed" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
-        [vc.navigationController popToRootViewControllerAnimated:YES];
-    };
-    transactionVC.cancelBlock = ^(MOTransactionViewController *vc) {
-        [[[UIAlertView alloc] initWithTitle:nil message:@"Canceled" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
-        [vc.navigationController popToRootViewControllerAnimated:YES];
-    };
-    transactionVC.errorBlock = ^(MOTransactionViewController *vc, NSError *error) {
-        [[[UIAlertView alloc] initWithTitle:nil message:@"Error" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
-        [vc.navigationController popToRootViewControllerAnimated:YES];
-    };
-    [transactionVC startInNavigationController:self.navigationController];
-#endif
-    
-}
-
-- (IBAction)receiptsAction:(id)sender {
-    UIViewController *vc = [[MyOrder shared] receiptsViewController];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-
-- (IBAction)walletHistoryAction:(id)sender {
-//    [[MyOrder shared] loadWalletHistoryOnSuccess:^(NSDictionary *response) {
-//        
-//    } error:^(NSError *error) {
-//        
-//    }];
-}
-
+//Logout
 - (IBAction)logoutAction:(id)sender {
     [MOProgressHUD show];
     [[MyOrder shared] logoutOnSuccess:^{
@@ -139,6 +83,80 @@
     }];
 }
 
+//Register view
+- (IBAction)registerAction:(id)sender {
+    UIViewController *vc = [[MORegisterViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+//Show wallet
+- (IBAction)walletAction:(id)sender {
+    UIViewController *vc = [[MyOrder shared] walletViewControllerWithLogin:self.forceLoginSwitch.isOn];
+    [self.navigationController pushViewController:vc animated:YES];    
+}
+
+
+//Generic order action
+- (IBAction)orderAction:(id)sender {
+    //Create the order
+    MOOrder *order = [MOOrder new];
+    order.externalOrderId = @"123456";
+    [order addItemWithName:@"MyOrder demo item" price:2.25 quantity:2];
+    
+    //Generic way to start payments
+    UIViewController *vc = [[MyOrder shared] paymentViewControllerForOrder:order forceLogin:self.forceLoginSwitch.isOn onCompletion:^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+//Custom order for a specific provider
+- (IBAction)orderIdealAction:(id)sender {
+    
+    //Create the order
+    MOOrder *order = [MOOrder new];
+    order.externalOrderId = @"123456";
+    [order addItemWithName:@"MyOrder ideal payment" price:2.25 quantity:2];
+    
+    //Custom way to start a particular payment and add blocks
+    MOTransactionViewController *transactionVC = [[MyOrder shared] transactionViewControllerForProvider:[MOIdealTransaction providerName]];
+    transactionVC.transaction.order = order;
+    transactionVC.requiresLogin = YES;
+    
+    //Optional: Custom logic to control whether the transaction is ready
+    transactionVC.startBlock = ^(MOTransactionViewController *vc) {
+        return YES;
+    };
+    
+    //Optional: Custom logic when transaction finishes
+    transactionVC.completionBlock = ^(MOTransactionViewController *vc) {
+        [[[UIAlertView alloc] initWithTitle:nil message:@"Completed" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [vc.navigationController popToRootViewControllerAnimated:YES];
+    };
+    
+    //Optional: Custom logic when transaction is canceled
+    transactionVC.cancelBlock = ^(MOTransactionViewController *vc) {
+        [[[UIAlertView alloc] initWithTitle:nil message:@"Canceled" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [vc.navigationController popToRootViewControllerAnimated:YES];
+    };
+
+    //Optional: Custom logic when transaction fails
+    transactionVC.errorBlock = ^(MOTransactionViewController *vc, NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [vc.navigationController popToRootViewControllerAnimated:YES];
+    };
+    
+    //Present the controller in the navigation stack (if needed, because some will not require to be presented)
+    [transactionVC startInNavigationController:self.navigationController];
+}
+
+//Open receipts view
+- (IBAction)receiptsAction:(id)sender {
+    UIViewController *vc = [[MyOrder shared] receiptsViewController];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+//Chaneg colors to other random ones
 - (IBAction)colorValueChange:(id)sender {
     if ([sender isOn]) {
         [UIColor MO_setBackgroundColor:[UIColor brownColor]];
@@ -161,6 +179,8 @@
         [UIColor MO_setLinkTextColor:nil];
     }
 }
+
+#pragma mark - Other Helpers
 
 - (void)configureButtons {
     MyOrder *myOrder = [MyOrder shared];

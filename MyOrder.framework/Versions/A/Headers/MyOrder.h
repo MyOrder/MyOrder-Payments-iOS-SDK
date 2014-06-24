@@ -13,6 +13,7 @@
 #import "MOPaymentOperation.h"
 
 @class MOTransactionViewController;
+@class MOOperationViewController;
 
 typedef void(^MOBlock)(void);
 typedef void(^MOResponseDictionaryBlock)(NSDictionary *response);
@@ -27,6 +28,7 @@ typedef enum MyOrderEnvironment
     MyOrderEnvironmentNone,         // No environment set
     MyOrderEnvironmentLive,         // Live environment for production
     MyOrderEnvironmentSandbox,      // Sandbox environment for developing purposes
+    MyOrderEnvironmentPlayground,      // Playground environment is a sandbox one but open for any third party with mock data
     MyOrderEnvironmentOther,         // Other environment used only for automated tests or debuging
 } MyOrderEnvironment;
 
@@ -149,11 +151,11 @@ typedef enum MyOrderEnvironment
 
 
 /**
- Returns the UIViewController related to a particular payment operation
+ Returns the MOOperationViewController related to a particular payment operation
  @param operationName NSString of operation name.
  @returns UIViewController for specific transaction
  */
-- (UIViewController *)operationViewControllerForPaymentOperation:(NSString *)operationName;
+- (MOOperationViewController *)operationViewControllerForPaymentOperation:(NSString *)operationName;
 
 
 /**

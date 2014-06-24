@@ -8,13 +8,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import "MOViewController.h"
+#import "MOOperationViewController.h"
 #import "MOPayYourFriendsOperation.h"
 
-@interface MOPayYourFriendsOperationViewController : MOViewController
-
-@property (nonatomic, copy) void (^completionBlock)(MOPayYourFriendsOperationViewController *controller);
-@property (nonatomic, copy) void (^errorBlock)(MOPayYourFriendsOperationViewController *controller, NSError *error);
-@property (nonatomic, strong) MOPayYourFriendsOperation *operation;
+@interface MOPayYourFriendsOperationViewController : MOOperationViewController
 
 @end

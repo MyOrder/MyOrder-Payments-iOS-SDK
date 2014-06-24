@@ -10,6 +10,8 @@
 
 @interface MOHeaderView : UIView
 
+@property (readonly) UILabel *label;
+
 - (id)initWithWidth:(CGFloat)width title:(NSString *)title;
 
 @end

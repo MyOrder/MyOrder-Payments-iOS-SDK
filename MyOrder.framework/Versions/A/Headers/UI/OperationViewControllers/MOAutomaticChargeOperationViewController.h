@@ -7,12 +7,8 @@
 //
 
 #import "MOAutomaticChargeOperation.h"
-#import "MOViewController.h"
+#import "MOOperationViewController.h"
 
-@interface MOAutomaticChargeOperationViewController : MOViewController
-
-@property (nonatomic, copy) void (^completionBlock)(MOAutomaticChargeOperationViewController *controller);
-@property (nonatomic, copy) void (^errorBlock)(MOAutomaticChargeOperationViewController *controller, NSError *error);
-@property (nonatomic, strong) MOAutomaticChargeOperation *operation;
+@interface MOAutomaticChargeOperationViewController : MOOperationViewController
 
 @end

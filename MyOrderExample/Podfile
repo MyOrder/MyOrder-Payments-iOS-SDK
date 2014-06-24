@@ -1,8 +1,0 @@
-platform :ios, '5.1'
-inhibit_all_warnings!
-
-pod 'SVProgressHUD'
-pod 'TPKeyboardAvoiding'
-#pod 'PayPalMPL'
-pod 'PayPalMPL', podspec: 'https://raw.githubusercontent.com/xslim/CustomSpecs/master/PayPalMPL.podspec'
-pod 'CardIO'
