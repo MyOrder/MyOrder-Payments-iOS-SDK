@@ -27,7 +27,11 @@ And run `pod install` in your project.
 
 ### Manual installation
 
-Download the iOS SDK and drag and drop the `MyOrder.framework` folder into your project and make sure that the copy option is marked
+CocoaPods is preferred as it is lot easier to install. However if you prefer a manual installation then do:
+
+1. Download the iOS SDK, drag and drop the `MyOrder.framework` folder into your Frameworks project group and make sure that the copy option is marked.
+2. Open your project Build Settings, look for "Header Search Paths" and add "${SRCROOT}/MyOrder.framework" recursive.
+3. Add the MyOrder.bundle folder contained inside the MyOrder.framework into your project tree.
 
 Additionally, make sure that the following Apple frameworks are included in your project: 
 
