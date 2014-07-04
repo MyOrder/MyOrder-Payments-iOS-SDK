@@ -41,8 +41,8 @@ Additionally, make sure that the following Apple frameworks are included in your
 
 And these third party dependencies:
 
-* [SVProgressHUD](https://github.com/samvermette/SVProgressHUD) (Required)
 * [TPKeyboardAvoiding](https://github.com/michaeltyson/TPKeyboardAvoiding) (Required)
+* [SVProgressHUD](https://github.com/samvermette/SVProgressHUD) (Optional. Configure `MOProgressHUD` if a different HUD wanted)
 * [PayPalMPL](https://developer.paypal.com/webapps/developer/docs/classic/mobile/gs_MPL/) (Only required when PayPal is used as a payment method)
 * [CardIO](https://www.card.io/) (Optional, adds a camera card reader to the credit card payments)
 
