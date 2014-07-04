@@ -1,6 +1,6 @@
 {
   "name": "MyOrder",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "summary": "MyOrder Payment library for iOS.",
   "homepage": "http://myorder.nl/sdk",
   "license": {
@@ -10,7 +10,7 @@
   "authors": "MyOrder B.V.",
   "source": {
     "git": "https://github.com/MyOrder/MyOrder-Payments-iOS-SDK.git",
-    "tag": "2.0.1"
+    "tag": "2.0.2"
   },
   "platforms": {
     "ios": "6.0"
