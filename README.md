@@ -15,11 +15,15 @@ Add the following to your Podfile
 pod "MyOrder"
 ```
 
-and optionally (if PayPal or CreditCard options in use)
-
+Additionally, if PayPal or CreditCard providers are used add:
 ```
-pod 'PayPalMPL'
-pod 'CardIO'
+pod "PayPalMPL"
+pod "CardIO"
+```
+
+And finally, if you want to make use of a generic HUD indicator, the lib supports `SVProgressHUD` automatically (more information below). Add it by:
+```
+pod "SVProgressHUD"
 ```
 
 And run `pod install` in your project.
@@ -42,7 +46,7 @@ Additionally, make sure that the following Apple frameworks are included in your
 And these third party dependencies:
 
 * [TPKeyboardAvoiding](https://github.com/michaeltyson/TPKeyboardAvoiding) (Required)
-* [SVProgressHUD](https://github.com/samvermette/SVProgressHUD) (Optional. Configure `MOProgressHUD` if a different HUD wanted)
+* [SVProgressHUD](https://github.com/samvermette/SVProgressHUD) (Optional. Configure `MOProgressHUD` if a different HUD wanted. More information below)
 * [PayPalMPL](https://developer.paypal.com/webapps/developer/docs/classic/mobile/gs_MPL/) (Only required when PayPal is used as a payment method)
 * [CardIO](https://www.card.io/) (Optional, adds a camera card reader to the credit card payments)
 
@@ -57,12 +61,12 @@ Before using the MyOrderSDK, you need to set up the credentials. You can do it b
 
 ```
     MyOrder *myOrder = [MyOrder shared];
-    myOrder.apiKey = @"d712d563-d5ed-4826-8920-1b2c2b743ba9";
-    myOrder.apiSecret = @"hH3#1PxxS";
+    myOrder.apiKey = @"36bd8913-bf56-4aa0-9492-49a3240597ea";
+    myOrder.apiSecret = @"12H@c9kT$At";
     myOrder.URLScheme = @"myapp-scheme";
 ```
 
-Please, note that you will need your own `apiKey` and `apiSecret`. You can get request them on the [Official MyOrder developers portal](http://myorder.nl/sdk). 
+Please, note that you will need your own `apiKey` and `apiSecret`. You can request them on the [Official MyOrder developers portal](http://myorder.nl/sdk). 
 
 Your URL Scheme is used to open the app after an iDeal transaction has been made, and therefore it is required when iDeal is active. Set a URL Type in your project Info settings and use the same for the lib `URLScheme`, and implement this method in your delegate:
 
@@ -74,7 +78,7 @@ Your URL Scheme is used to open the app after an iDeal transaction has been made
 
 Additionally, you can customize other MyOrder properties depending on your project needs:
 
-* `environment`: use `MyOrderEnvironmentLive` for real money operations or `MyOrderEnvironmentSandbox` for testing purposes.
+* `environment`: use `MyOrderEnvironmentLive` for real money operations or `MyOrderEnvironmentSandbox` or `MyOrderEnvironmentPlayground` for testing purposes.
 * `defaultMerchantDescription`: Customize the description that some services like iDeal will show in the bank description receipt.
 * Available payment providers can be changed by using the `configureWithPaymentProviders` method. Example:
 ```
@@ -85,6 +89,9 @@ Additionally, you can customize other MyOrder properties depending on your proje
 [myOrder configureWithPaymentOperations:@[@"PayYourFriends", @"AutomaticCharge"]];
 ```
 
+A list of all available payment providers and operations can be retrieved by `[myOrder availablePaymentProviders]` and `[myOrder availablePaymentOperations]`
+
+
 ### Present the wallet
 
 Wallet can be presented by the use of `walletViewControllerWithLogin` method. Example:
@@ -94,7 +101,7 @@ UIViewController *vc = [[MyOrder shared] walletViewControllerWithLogin:YES];
 [self.navigationController pushViewController:vc animated:YES];    
 ```
 
-Note that if login is required but the user is not logged in yet, then the SDK will return a Login UI controller instead of the wallet one, and will automatically redirect to the wallet when login is performed by changing the `navigationController` stack.
+Note that if login is required but the user is not logged in yet, then the SDK will return a Login UI controller instead of the wallet one, and will automatically redirect to the wallet when login is performed by changing the `navigationController` stack. If Login is passed to `NO`, you will need to deal with login sessions yourself.
 
 
 ### Present payment screen with list of methods
@@ -110,7 +117,7 @@ UIViewController *vc = [[MyOrder shared] paymentViewControllerForOrder:order for
 [self.navigationController pushViewController:vc animated:YES];
 ```
 
-Similarly to the wallet method, making a payment does not necessarily require login. However, If the user is not logged in, some payment methods will not be presented. If login is required, then this method could potentially return a controller for login in, already set up for continuing with the payment when successfully logged in.
+Similarly to the wallet method, making a payment does not necessarily require login. However, If the user is not logged in, ~~some payment methods will not be presented~~ no payment methods will be presented. If login is required, then this method could potentially return a controller for login in, already set up for continuing with the payment when successfully logged in.
 
 ### Make a payment with a specific payment method
 
@@ -154,6 +161,21 @@ MyOrder comes with a set of appearance methods to customize the UI according to 
 ```
 [UIColor MO_setBackgroundColor:[UIColor brownColor]];
 [UIFont MO_setRegularFontName:@"Arial"];
+```
+
+### Customize Progress HUD indicators
+
+MyOrder makes use of `MOProgressHUD` for displaying success and error messages. By default, `MOProgressHUD` will make use of `SVProgressHUD` if the library exists within your project. However, if you prefer to use a different HUD indicator (or any other type of UI control) you can customize `MOProgressHUD` by setting the appropriate blocks. Example:
+
+
+```
+[MOProgressHUD setShowErrorHandler:^(NSString *message) {
+     [[[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+}];
+
+[MOProgressHUD setShowSuccessHandler:^(NSString *message) {
+     [[[UIAlertView alloc] initWithTitle:@"Success" message:message delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+}];
 ```
 
 
