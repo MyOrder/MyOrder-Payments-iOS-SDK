@@ -15,15 +15,17 @@ Add the following to your Podfile
 pod "MyOrder"
 ```
 
-Additionally, if PayPal or CreditCard providers are used add:
+Additionally, if CreditCard or PayPal providers are used add:
 ```
-pod "PayPalMPL"
-pod "CardIO"
+pod "CardIO", "~>3.4.4"
+pod "PayPalMPL", "~>2.1.0"
+# Use this podspec if official PayPal pod is broken
+#pod 'PayPalMPL', podspec: 'https://gist.githubusercontent.com/angelolloqui/82768cbbc27da2c2e3ea/raw/35d77377edb57265db877db671c9a2c1c6df3c22/PayPalMPL.podspec.json'
 ```
 
 And finally, if you want to make use of a generic HUD indicator, the lib supports `SVProgressHUD` automatically (more information below). Add it by:
 ```
-pod "SVProgressHUD"
+pod "SVProgressHUD", "~>1.0.0"
 ```
 
 And run `pod install` in your project.
