@@ -37,6 +37,9 @@
 		0B484327186D8F520065942B /* MyOrder.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B484326186D8F520065942B /* MyOrder.bundle */; };
 		0B885A9E192C9B9300925148 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B885A9D192C9B9300925148 /* AddressBook.framework */; };
 		0B885AA0192C9B9F00925148 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B885A9F192C9B9F00925148 /* AddressBookUI.framework */; };
+		0B9065C21A07C03C0083FBF3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9065C11A07C03C0083FBF3 /* AudioToolbox.framework */; };
+		0B9065C41A07C0520083FBF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9065C31A07C0520083FBF3 /* CoreMedia.framework */; };
+		0B9065C61A07C1B60083FBF3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9065C51A07C1B60083FBF3 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,9 @@
 		0B484326186D8F520065942B /* MyOrder.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MyOrder.bundle; path = ../MyOrder.framework/Versions/A/Resources/MyOrder.bundle; sourceTree = "<group>"; };
 		0B885A9D192C9B9300925148 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		0B885A9F192C9B9F00925148 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		0B9065C11A07C03C0083FBF3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0B9065C31A07C0520083FBF3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0B9065C51A07C1B60083FBF3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B9065C61A07C1B60083FBF3 /* MobileCoreServices.framework in Frameworks */,
+				0B9065C41A07C0520083FBF3 /* CoreMedia.framework in Frameworks */,
+				0B9065C21A07C03C0083FBF3 /* AudioToolbox.framework in Frameworks */,
 				0B470D691959656C00E4D262 /* libxml2.2.dylib in Frameworks */,
 				0B470D671959655400E4D262 /* libz.dylib in Frameworks */,
 				0B470D58195962C800E4D262 /* AVFoundation.framework in Frameworks */,
@@ -214,6 +223,9 @@
 		0B4842CC186D84E20065942B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B9065C51A07C1B60083FBF3 /* MobileCoreServices.framework */,
+				0B9065C31A07C0520083FBF3 /* CoreMedia.framework */,
+				0B9065C11A07C03C0083FBF3 /* AudioToolbox.framework */,
 				0B470D681959656C00E4D262 /* libxml2.2.dylib */,
 				0B470D661959655400E4D262 /* libz.dylib */,
 				0B470D57195962C800E4D262 /* AVFoundation.framework */,
