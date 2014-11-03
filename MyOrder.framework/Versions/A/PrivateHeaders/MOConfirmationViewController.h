@@ -10,8 +10,8 @@
 
 @interface MOConfirmationViewController : UIViewController
 
-@property(nonatomic, strong) NSString *header;
-@property(nonatomic, strong) NSString *fieldName;
+@property(nonatomic, copy) NSString *header;
+@property(nonatomic, copy) NSString *fieldName;
 
 @property (nonatomic, copy) void (^completionBlock)(MOConfirmationViewController *controller, NSString *confirmationValue);
 

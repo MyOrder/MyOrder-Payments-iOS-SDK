@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MORegisterVerificationView : UIScrollView
+typedef void(^MORegisterVerificationBlock)(NSString *activationCode);
 
-@property (nonatomic, strong) UIBarButtonItem *nextButtonItem;
-@property (nonatomic, readonly) NSString *activationCode;
+@interface MORegisterVerificationView : UIView
+
+@property (nonatomic, copy) MORegisterVerificationBlock onConfirm;
 
 - (id)initWithPhone:(NSString *)phone;
 

@@ -19,15 +19,16 @@ typedef enum {
 
 @interface MOReceipt : NSObject
 
-@property (nonatomic, strong) NSString *orderId;
+@property (nonatomic, copy) NSString *orderId;
 @property (nonatomic, strong) NSArray *fields;
 @property (nonatomic, strong) NSDate *creationDate;
-@property (nonatomic, strong) NSString *merchantName;
-@property (nonatomic, strong) NSString *socialMessage;
+@property (nonatomic, copy) NSString *merchantName;
+@property (nonatomic, copy) NSString *socialMessage;
 
 @property (nonatomic, assign) NSInteger statusCode;
-@property (nonatomic, strong) NSString *statusDescription;
+@property (nonatomic, copy) NSString *statusDescription;
 @property (nonatomic, assign) MOReceiptStatus status;
+@property (nonatomic, copy) NSString *takeAwayTime;
 
 @property (nonatomic, strong) NSArray *products;
 
@@ -38,10 +39,11 @@ typedef enum {
 
 @interface MOReceiptProduct : NSObject
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *details;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *details;
 @property (nonatomic, assign) NSInteger quantity;
 @property (nonatomic, assign) double price;
+@property (nonatomic, copy) NSString *imageUrl;
 
 - (id)initWithData:(NSDictionary *)data;
 

@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) MOTransaction *transaction;
 @property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 
 //TODO: Or delegates would be better?

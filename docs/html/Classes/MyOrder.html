@@ -92,8 +92,6 @@
 	
 	<option value="//api/name/loadWalletHistoryOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- loadWalletHistoryOnSuccess:error:</option>
 	
-	<option value="//api/name/loginOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- loginOnSuccess:error:</option>
-	
 	<option value="//api/name/loginWithPassword:saveCredentials:onSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- loginWithPassword:saveCredentials:onSuccess:error:</option>
 	
 	<option value="//api/name/logoutOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- logoutOnSuccess:error:</option>
@@ -116,7 +114,7 @@
 	
 	<option value="//api/name/updateBalanceOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- updateBalanceOnSuccess:error:</option>
 	
-	<option value="//api/name/updatePassword:onSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- updatePassword:onSuccess:error:</option>
+	<option value="//api/name/updatePassword:oldPassword:onSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- updatePassword:oldPassword:onSuccess:error:</option>
 	
 	<option value="//api/name/updateReceiptsOnSuccess:error:">&nbsp;&nbsp;&nbsp;&nbsp;- updateReceiptsOnSuccess:error:</option>
 	
@@ -148,9 +146,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Generic methods">Generic methods</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_API Methods">API Methods</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_UI Methods">UI Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_API Methods">API Methods</a></span></li>
 	
 </ul></li>
 
@@ -216,8 +214,6 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadWalletHistoryOnSuccess:error:">loadWalletHistoryOnSuccess:error:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginOnSuccess:error:">loginOnSuccess:error:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginWithPassword:saveCredentials:onSuccess:error:">loginWithPassword:saveCredentials:onSuccess:error:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logoutOnSuccess:error:">logoutOnSuccess:error:</a></span></li>
@@ -240,7 +236,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateBalanceOnSuccess:error:">updateBalanceOnSuccess:error:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updatePassword:onSuccess:error:">updatePassword:onSuccess:error:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updatePassword:oldPassword:onSuccess:error:">updatePassword:oldPassword:onSuccess:error:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateReceiptsOnSuccess:error:">updateReceiptsOnSuccess:error:</a></span></li>
 	
@@ -457,6 +453,49 @@
 						</ul>
 						
 						
+						<a title="UI Methods" name="task_UI Methods"></a>
+						<h3 class="subsubtitle task-title">UI Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/transactionViewControllerForProvider:">&ndash;&nbsp;transactionViewControllerForProvider:</a></code>
+		<span class="tooltip"><p>Returns the transaction UIViewController related to a particular provider. If the controller is meant to be used for payments, you need to pass the <a href="../Classes/MOOrder.html">MOOrder</a> to the  vc.transaction.order, otherwise the operation will try to fill your wallet</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operationViewControllerForPaymentOperation:">&ndash;&nbsp;operationViewControllerForPaymentOperation:</a></code>
+		<span class="tooltip"><p>Returns the <a href="../Classes/MOOperationViewController.html">MOOperationViewController</a> related to a particular payment operation</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/walletViewControllerWithLogin:">&ndash;&nbsp;walletViewControllerWithLogin:</a></code>
+		<span class="tooltip"><p>Creates and returns a UIViewController with the users wallet and payment methods. Note that some payment providers can be used without login as long as the mobile phone is set</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/paymentViewControllerForOrder:forceLogin:onCompletion:">&ndash;&nbsp;paymentViewControllerForOrder:forceLogin:onCompletion:</a></code>
+		<span class="tooltip"><p>Creates and returns a UIViewController for selecting payment options for a specific order. Note that some payment providers can be used without login as long as the mobile phone is set</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptsViewController">&ndash;&nbsp;receiptsViewController</a></code>
+		<span class="tooltip"><p>Creates and returns a UIViewController with the <a href="#//api/name/receipts">receipts</a> list of the user</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
 						<a title="API Methods" name="task_API Methods"></a>
 						<h3 class="subsubtitle task-title">API Methods</h3>
 
@@ -491,13 +530,6 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/loginOnSuccess:error:">&ndash;&nbsp;loginOnSuccess:error:</a></code>
-		<span class="tooltip"><p>Logs in the user with the stored credentials from a previously saved login</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/logoutOnSuccess:error:">&ndash;&nbsp;logoutOnSuccess:error:</a></code>
 		<span class="tooltip"><p>Logs out the user and deletes saved credentials</p></span>
 	</span>
@@ -526,7 +558,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/updatePassword:onSuccess:error:">&ndash;&nbsp;updatePassword:onSuccess:error:</a></code>
+		<code><a href="#//api/name/updatePassword:oldPassword:onSuccess:error:">&ndash;&nbsp;updatePassword:oldPassword:onSuccess:error:</a></code>
 		<span class="tooltip"><p>Set a new user&rsquo;s password. It requires user to be logged in</p></span>
 	</span>
 	
@@ -569,49 +601,6 @@
 </li>
 						</ul>
 						
-						
-						<a title="UI Methods" name="task_UI Methods"></a>
-						<h3 class="subsubtitle task-title">UI Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/transactionViewControllerForProvider:">&ndash;&nbsp;transactionViewControllerForProvider:</a></code>
-		<span class="tooltip"><p>Returns the transaction UIViewController related to a particular provider. If the controller is meant to be used for payments, you need to pass the <a href="../Classes/MOOrder.html">MOOrder</a> to the  vc.transaction.order, otherwise the operation will try to fill your wallet</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/operationViewControllerForPaymentOperation:">&ndash;&nbsp;operationViewControllerForPaymentOperation:</a></code>
-		<span class="tooltip"><p>Returns the UIViewController related to a particular payment operation</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/walletViewControllerWithLogin:">&ndash;&nbsp;walletViewControllerWithLogin:</a></code>
-		<span class="tooltip"><p>Creates and returns a UIViewController with the users wallet and payment methods. Note that some payment providers can be used without login as long as the mobile phone is set</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/paymentViewControllerForOrder:forceLogin:onCompletion:">&ndash;&nbsp;paymentViewControllerForOrder:forceLogin:onCompletion:</a></code>
-		<span class="tooltip"><p>Creates and returns a UIViewController for selecting payment options for a specific order. Note that some payment providers can be used without login as long as the mobile phone is set</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/receiptsViewController">&ndash;&nbsp;receiptsViewController</a></code>
-		<span class="tooltip"><p>Creates and returns a UIViewController with the <a href="#//api/name/receipts">receipts</a> list of the user</p></span>
-	</span>
-	
-	
-</li>
-						</ul>
-						
 					</div>
 					
 					
@@ -634,7 +623,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *URLScheme</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *URLScheme</code></div>
 
     
 	
@@ -675,7 +664,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKey</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *apiKey</code></div>
 
     
 	
@@ -716,7 +705,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiSecret</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *apiSecret</code></div>
 
     
 	
@@ -757,7 +746,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *availablePaymentOperations</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSArray *availablePaymentOperations</code></div>
 
     
 	
@@ -798,7 +787,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *availablePaymentProviders</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSArray *availablePaymentProviders</code></div>
 
     
 	
@@ -880,7 +869,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *configuredPaymentOperations</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSArray *configuredPaymentOperations</code></div>
 
     
 	
@@ -921,7 +910,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *configuredPaymentProviders</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSArray *configuredPaymentProviders</code></div>
 
     
 	
@@ -1003,7 +992,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *defaultMerchantDescription</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *defaultMerchantDescription</code></div>
 
     
 	
@@ -1126,7 +1115,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *phoneNumber</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *phoneNumber</code></div>
 
     
 	
@@ -1611,62 +1600,6 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/loginOnSuccess:error:" title="loginOnSuccess:error:"></a>
-	<h3 class="subsubtitle method-title">loginOnSuccess:error:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Logs in the user with the stored credentials from a previously saved login</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)loginOnSuccess:(MOBlock)<em>block</em> error:(MOErrorBlock)<em>errorBlock</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>Block executed when the login finishes successfully</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>errorBlock</em></dt>
-			<dd><p>Block executed when an error occurs</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Logs in the user with the stored credentials from a previously saved login</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MyOrder.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/loginWithPassword:saveCredentials:onSuccess:error:" title="loginWithPassword:saveCredentials:onSuccess:error:"></a>
 	<h3 class="subsubtitle method-title">loginWithPassword:saveCredentials:onSuccess:error:</h3>
 	
@@ -1851,12 +1784,12 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the UIViewController related to a particular payment operation</p>
+		<p>Returns the <a href="../Classes/MOOperationViewController.html">MOOperationViewController</a> related to a particular payment operation</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (UIViewController *)operationViewControllerForPaymentOperation:(NSString *)<em>operationName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (MOOperationViewController *)operationViewControllerForPaymentOperation:(NSString *)<em>operationName</em></code></div>
 
     
 	
@@ -1883,7 +1816,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the UIViewController related to a particular payment operation</p>
+		<p>Returns the <a href="../Classes/MOOperationViewController.html">MOOperationViewController</a> related to a particular payment operation</p>
 	</div>
 	
 	
@@ -2321,8 +2254,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/updatePassword:onSuccess:error:" title="updatePassword:onSuccess:error:"></a>
-	<h3 class="subsubtitle method-title">updatePassword:onSuccess:error:</h3>
+	<a name="//api/name/updatePassword:oldPassword:onSuccess:error:" title="updatePassword:oldPassword:onSuccess:error:"></a>
+	<h3 class="subsubtitle method-title">updatePassword:oldPassword:onSuccess:error:</h3>
 	
 	
 	
@@ -2332,7 +2265,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)updatePassword:(NSString *)<em>password</em> onSuccess:(MOBlock)<em>block</em> error:(MOErrorBlock)<em>errorBlock</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)updatePassword:(NSString *)<em>password</em> oldPassword:(NSString *)<em>oldPassword</em> onSuccess:(MOBlock)<em>block</em> error:(MOErrorBlock)<em>errorBlock</em></code></div>
 
     
 	
@@ -2703,7 +2636,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Xaton B.V.. All rights reserved. (Last updated: 2014-05-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Xaton B.V.. All rights reserved. (Last updated: 2014-11-03)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

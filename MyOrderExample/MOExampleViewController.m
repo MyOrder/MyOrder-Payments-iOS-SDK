@@ -21,7 +21,6 @@
 @interface MOExampleViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *formView;
-@property (strong, nonatomic) IBOutlet UIButton *autoLoginButton;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIButton *registerButton;
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
@@ -55,22 +54,9 @@
 //Perform login manually
 - (IBAction)loginAction:(id)sender {    
     MOLoginViewController *loginVC = [[MOLoginViewController alloc] init];
-    loginVC.allowAutomaticLogin = NO;
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 
-
-//Perform automatic login if saved credentials
-- (IBAction)autoLoginAction:(id)sender {
-    [MOProgressHUD show];
-    [[MyOrder shared] loginOnSuccess:^{
-        [MOProgressHUD dismiss];
-        [self configureButtons];
-    } error:^(NSError *error){
-        [MOProgressHUD showError:error];
-        [self configureButtons];
-    }];
-}
 
 //Logout
 - (IBAction)logoutAction:(id)sender {
@@ -92,7 +78,7 @@
 //Show wallet
 - (IBAction)walletAction:(id)sender {
     UIViewController *vc = [[MyOrder shared] walletViewControllerWithLogin:self.forceLoginSwitch.isOn];
-    [self.navigationController pushViewController:vc animated:YES];    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -130,13 +116,13 @@
     
     //Optional: Custom logic when transaction finishes
     transactionVC.completionBlock = ^(MOTransactionViewController *vc) {
-        [[[UIAlertView alloc] initWithTitle:nil message:@"Completed" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"" message:@"Completed" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
         [vc.navigationController popToRootViewControllerAnimated:YES];
     };
     
     //Optional: Custom logic when transaction is canceled
     transactionVC.cancelBlock = ^(MOTransactionViewController *vc) {
-        [[[UIAlertView alloc] initWithTitle:nil message:@"Canceled" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"" message:@"Canceled" delegate:nil cancelButtonTitle:@"close" otherButtonTitles:nil] show];
         [vc.navigationController popToRootViewControllerAnimated:YES];
     };
 
@@ -184,8 +170,6 @@
 
 - (void)configureButtons {
     MyOrder *myOrder = [MyOrder shared];
-    self.autoLoginButton.hidden = myOrder.isLoggedIn;
-    self.autoLoginButton.enabled = myOrder.hasSavedCredentials;
     self.loginButton.hidden = myOrder.isLoggedIn;
     self.registerButton.hidden = myOrder.isLoggedIn;
     self.logoutButton.hidden = !myOrder.isLoggedIn;

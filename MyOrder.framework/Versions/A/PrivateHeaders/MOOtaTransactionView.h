@@ -13,6 +13,6 @@
 @interface MOOtaTransactionView : MOTransactionView
 
 @property (nonatomic, strong, readonly) MOOtaTransaction *transaction;
-@property (nonatomic, strong) NSString *savedIban;
+@property (nonatomic, copy) NSString *savedIban;
 
 @end

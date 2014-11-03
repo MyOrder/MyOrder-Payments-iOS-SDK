@@ -42,11 +42,11 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/MO_setBoldFontName:">&nbsp;&nbsp;&nbsp;&nbsp;+ MO_setBoldFontName:</option>
+	<option value="//api/name/MO_setBoldFont:">&nbsp;&nbsp;&nbsp;&nbsp;+ MO_setBoldFont:</option>
 	
-	<option value="//api/name/MO_setFontName:">&nbsp;&nbsp;&nbsp;&nbsp;+ MO_setFontName:</option>
+	<option value="//api/name/MO_setFont:">&nbsp;&nbsp;&nbsp;&nbsp;+ MO_setFont:</option>
 	
-	<option value="//api/name/MO_setMediumFontName:">&nbsp;&nbsp;&nbsp;&nbsp;+ MO_setMediumFontName:</option>
+	<option value="//api/name/MO_setMediumFont:">&nbsp;&nbsp;&nbsp;&nbsp;+ MO_setMediumFont:</option>
 	
 	
 	
@@ -66,8 +66,6 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Customizable font setters">Customizable font setters</a></span></li>
-	
 </ul></li>
 
 
@@ -78,11 +76,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/MO_setBoldFontName:">MO_setBoldFontName:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/MO_setBoldFont:">MO_setBoldFont:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/MO_setFontName:">MO_setFontName:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/MO_setFont:">MO_setFont:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/MO_setMediumFontName:">MO_setMediumFontName:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/MO_setMediumFont:">MO_setMediumFont:</a></span></li>
 	
 </ul></li>
 
@@ -132,28 +130,28 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						<a title="Customizable font setters" name="task_Customizable font setters"></a>
 						
-<h3 class="subsubtitle task-title">Customizable font setters</h3>
+						
+
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/MO_setFontName:">+&nbsp;MO_setFontName:</a></code>
-		<span class="tooltip"><p>Changes the main font used by regular labels in the library</p></span>
+		<code><a href="#//api/name/MO_setFont:">+&nbsp;MO_setFont:</a></code>
+		<span class="tooltip"><p>Set a custom font to use by the library on regular labels. Font size can also be changed</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/MO_setBoldFontName:">+&nbsp;MO_setBoldFontName:</a></code>
-		<span class="tooltip"><p>Changes the main font used by bold labels in the library</p></span>
+		<code><a href="#//api/name/MO_setBoldFont:">+&nbsp;MO_setBoldFont:</a></code>
+		<span class="tooltip"><p>Set a custom font to use by the library on bold labels. Font size can also be changed</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/MO_setMediumFontName:">+&nbsp;MO_setMediumFontName:</a></code>
-		<span class="tooltip"><p>Changes the main font used by semi-bold labels in the library</p></span>
+		<code><a href="#//api/name/MO_setMediumFont:">+&nbsp;MO_setMediumFont:</a></code>
+		<span class="tooltip"><p>Set a custom font to use by the library on medium labels. Font size can also be changed</p></span>
 	</span>
 	
 	
@@ -173,18 +171,18 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/MO_setBoldFontName:" title="MO_setBoldFontName:"></a>
-	<h3 class="subsubtitle method-title">MO_setBoldFontName:</h3>
+	<a name="//api/name/MO_setBoldFont:" title="MO_setBoldFont:"></a>
+	<h3 class="subsubtitle method-title">MO_setBoldFont:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Changes the main font used by bold labels in the library</p>
+		<p>Set a custom font to use by the library on bold labels. Font size can also be changed</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)MO_setBoldFontName:(NSString *)<em>fontName</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)MO_setBoldFont:(UIFont *)<em>font</em></code></div>
 
     
 	
@@ -192,8 +190,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>fontName</em></dt>
-			<dd><p>Font to use on bold labels. Nil for returning to default</p></dd>
+			<dt><em>font</em></dt>
+			<dd><p>Font to use in the SDK for bold labels</p></dd>
 		</dl>
 		
 	</div>
@@ -206,7 +204,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Changes the main font used by bold labels in the library</p>
+		<p>Set a custom font to use by the library on bold labels. Font size can also be changed</p>
 	</div>
 	
 	
@@ -224,18 +222,18 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/MO_setFontName:" title="MO_setFontName:"></a>
-	<h3 class="subsubtitle method-title">MO_setFontName:</h3>
+	<a name="//api/name/MO_setFont:" title="MO_setFont:"></a>
+	<h3 class="subsubtitle method-title">MO_setFont:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Changes the main font used by regular labels in the library</p>
+		<p>Set a custom font to use by the library on regular labels. Font size can also be changed</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)MO_setFontName:(NSString *)<em>fontName</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)MO_setFont:(UIFont *)<em>font</em></code></div>
 
     
 	
@@ -243,8 +241,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>fontName</em></dt>
-			<dd><p>Font to use on regular labels. Nil for returning to default</p></dd>
+			<dt><em>font</em></dt>
+			<dd><p>Font to use in the SDK for regular labels</p></dd>
 		</dl>
 		
 	</div>
@@ -257,7 +255,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Changes the main font used by regular labels in the library</p>
+		<p>Set a custom font to use by the library on regular labels. Font size can also be changed</p>
 	</div>
 	
 	
@@ -275,18 +273,18 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/MO_setMediumFontName:" title="MO_setMediumFontName:"></a>
-	<h3 class="subsubtitle method-title">MO_setMediumFontName:</h3>
+	<a name="//api/name/MO_setMediumFont:" title="MO_setMediumFont:"></a>
+	<h3 class="subsubtitle method-title">MO_setMediumFont:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Changes the main font used by semi-bold labels in the library</p>
+		<p>Set a custom font to use by the library on medium labels. Font size can also be changed</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)MO_setMediumFontName:(NSString *)<em>fontName</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)MO_setMediumFont:(UIFont *)<em>font</em></code></div>
 
     
 	
@@ -294,8 +292,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>fontName</em></dt>
-			<dd><p>Font to use on semi-bold labels. Nil for returning to default</p></dd>
+			<dt><em>font</em></dt>
+			<dd><p>Font to use in the SDK for medium labels</p></dd>
 		</dl>
 		
 	</div>
@@ -308,7 +306,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Changes the main font used by semi-bold labels in the library</p>
+		<p>Set a custom font to use by the library on medium labels. Font size can also be changed</p>
 	</div>
 	
 	
@@ -340,7 +338,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Xaton B.V.. All rights reserved. (Last updated: 2014-05-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Xaton B.V.. All rights reserved. (Last updated: 2014-11-03)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

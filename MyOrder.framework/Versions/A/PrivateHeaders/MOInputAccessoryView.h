@@ -10,7 +10,8 @@
 
 @interface MOInputAccessoryView : UIView
 
+@property (nonatomic, weak) UITextField *textField;
+
 + (MOInputAccessoryView *)inputAccessoryViewForTextField:(UITextField *)textfield;
-- (id)initWithTextField:(UITextField *)textfield;
 
 @end

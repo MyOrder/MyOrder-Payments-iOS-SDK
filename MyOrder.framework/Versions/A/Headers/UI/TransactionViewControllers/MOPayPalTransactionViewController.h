@@ -10,4 +10,6 @@
 
 @interface MOPayPalTransactionViewController : MOTransactionViewController
 
+@property (nonatomic, assign) BOOL useNativeSDK;
+
 @end

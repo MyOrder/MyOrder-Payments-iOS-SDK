@@ -10,7 +10,7 @@
 
 typedef void(^MOPasswordVerificationBlock)(NSString *activationCode, NSString *password);
 
-@interface MOPasswordVerificationView : UIScrollView
+@interface MOPasswordVerificationView : UIView
 
 - (id)initWithPhone:(NSString *)phone;
 

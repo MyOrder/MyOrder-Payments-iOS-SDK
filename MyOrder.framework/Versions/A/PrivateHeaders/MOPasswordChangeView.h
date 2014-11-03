@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MOTextField.h"
+
+typedef void(^MOPasswordChangeViewBlock)(NSString *password, NSString *passwordConfirm, NSString *oldPassword, NSString *email, BOOL remember);
+
 @interface MOPasswordChangeView : UIView
 
-@property (nonatomic, strong, readonly) MOTextField *passwordTextField;
-@property (nonatomic, strong, readonly) MOTextField *confirmationTextField;
-@property (nonatomic, strong, readonly) MOTextField *emailTextField;
-@property (nonatomic, strong, readonly) UISwitch *rememberSwitch;
+@property (nonatomic, copy) MOPasswordChangeViewBlock onConfirm;
 
 @end

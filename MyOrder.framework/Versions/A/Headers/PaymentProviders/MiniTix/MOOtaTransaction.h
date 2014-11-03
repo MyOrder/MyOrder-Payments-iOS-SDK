@@ -13,13 +13,13 @@
 @interface MOOtaTransaction : MOTransaction
 
 /** IBAN number filled in by the user */
-@property (nonatomic, strong) NSString *iban;
+@property (nonatomic, copy) NSString *iban;
 
 /** Confirmation code received by SMS */
-@property (nonatomic, strong) NSString *confirmationCode;
+@property (nonatomic, copy) NSString *confirmationCode;
 
 /** Request ID */
-@property (nonatomic, strong) NSString *requestId;
+@property (nonatomic, copy) NSString *requestId;
 
 /** Check if the OTA module is valid for the logged in user
  @param block Success block (OTA is valid)

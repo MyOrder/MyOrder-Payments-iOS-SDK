@@ -15,7 +15,7 @@ typedef enum {
 
 typedef void(^MOEmailVerificationBlock)(NSString *email, NSString *code);
 
-@interface MOEmailVerificationView : UIScrollView
+@interface MOEmailVerificationView : UIView
 
 @property (nonatomic, assign) MOEmailVerificationViewStatus status;
 @property (nonatomic, copy) MOEmailVerificationBlock verifyBlock;

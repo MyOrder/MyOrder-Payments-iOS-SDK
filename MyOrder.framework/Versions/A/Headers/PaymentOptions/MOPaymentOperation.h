@@ -24,6 +24,12 @@ typedef void(^MOOperationBlock)(MOPaymentOperation *operation, id response);
 typedef void(^MOOperationErrorBlock)(MOPaymentOperation *operation, NSError *error);
 
 
+/**
+ *  Payment operations are extra actions a user can perform in his wallet. For example, setting autoloading properties
+ *  or transfering money to a friend. The MyOrder engine will automatically look for any subclass of MOPaymentOperation 
+ *  during startup. Note that the nature of the payment operations is very concrete to each individual case, so custom 
+ *  actions will be required on each case to complete them. Check the particular subclasses for more information
+ */
 @interface MOPaymentOperation : NSObject
 
 /**

@@ -17,7 +17,7 @@ pod "MyOrder"
 
 Additionally, if CreditCard or PayPal providers are used add:
 ```
-pod "CardIO", "~>3.4.4"
+pod "CardIO", "~>3.10.0"
 pod "PayPalMPL", "~>2.1.0"
 # Use this podspec if official PayPal pod is broken
 #pod 'PayPalMPL', podspec: 'https://gist.githubusercontent.com/angelolloqui/82768cbbc27da2c2e3ea/raw/35d77377edb57265db877db671c9a2c1c6df3c22/PayPalMPL.podspec.json'

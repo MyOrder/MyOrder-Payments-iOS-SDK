@@ -15,7 +15,7 @@ typedef enum {
 
 typedef void(^MOConditionsBlock)(MOConditionsType conditions);
 
-@interface MORegisterView : UIScrollView
+@interface MORegisterView : UIView
 
 @property (nonatomic, strong) UISwitch *conditionsSwitch;
 @property (nonatomic, copy) dispatch_block_t onNext;

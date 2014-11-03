@@ -13,4 +13,6 @@
 
 - (void)configureWithProduct:(MOReceiptProduct *)product;
 
++ (CGFloat)heightOfCellWithReceiptProduct:(MOReceiptProduct *)product width:(CGFloat)width;
+
 @end

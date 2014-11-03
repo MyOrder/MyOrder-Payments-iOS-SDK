@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MOViewController.h"
 @class MOReceipt;
 
-@interface MOReceiptDetailsViewController : UIViewController
+@interface MOReceiptDetailsViewController : MOViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) IBOutlet UITableView *view;
 @property (nonatomic, strong) MOReceipt *receipt;
+
+//Override if custom header wanted
+- (UIView *)tableHeaderViewForTable:(UITableView *)tableView;
 
 @end

@@ -1,6 +1,6 @@
 //
 //  CardIOView.h
-//  Version 3.8.1
+//  Version 3.10.0
 //
 //  Copyright (c) 2011-2014 PayPal. All rights reserved.
 //
@@ -17,11 +17,17 @@
 /// @return YES iff the user's device supports camera-based card scanning.
 + (BOOL)canReadCardWithCamera;
 
+/// The preload method prepares card.io to launch faster. Calling preload is optional but suggested.
+/// On an iPhone 5S, for example, preloading makes card.io launch ~400ms faster.
+/// The best time to call preload is when displaying a view from which card.io might be launched;
+/// e.g., inside your view controller's viewWillAppear: method.
+/// preload works in the background; the call to preload returns immediately.
+/// The preload method of CardIOPaymentViewController and of CardIOView do the same work,
+/// so a call to either of them suffices.
++ (void)preload;
+
 
 #pragma mark - Properties you MUST set
-
-/// Your app token. MUST be set before the CardIOView appears.
-@property(nonatomic, copy, readwrite) NSString *appToken;
 
 /// Typically, your view controller will set itself as this delegate.
 @property(nonatomic, strong, readwrite) id<CardIOViewDelegate> delegate;
@@ -41,7 +47,7 @@
 /// E.g., specifying "en" on a device set to "English" and "United Kingdom" will result in "en_GB".
 ///
 /// These localizations are currently included:
-/// ar,da,de,en,en_AU,en_GB,en_SE,es,es_MX,fr,he,it,ja,ko,ms,nb,nl,pl,pt,pt_BR,ru,sv,th,tr,zh-Hans,zh-Hant,zh-Hant_TW.
+/// ar,da,de,en,en_AU,en_GB,en_SE,es,es_MX,fr,he,is,it,ja,ko,ms,nb,nl,pl,pt,pt_BR,ru,sv,th,tr,zh-Hans,zh-Hant,zh-Hant_TW.
 @property(nonatomic, copy, readwrite) NSString *languageOrLocale;
 
 /// Alter the card guide (bracket) color. Opaque colors recommended.

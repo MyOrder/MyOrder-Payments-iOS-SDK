@@ -11,6 +11,7 @@
 #import "MOApiConnection.h"
 #import "MOTransaction.h"
 #import "MOPaymentOperation.h"
+#import "MOProgressHUD.h"
 
 @class MOTransactionViewController;
 @class MOOperationViewController;
@@ -43,19 +44,19 @@ typedef enum MyOrderEnvironment
 @property (nonatomic, assign) MyOrderEnvironment environment;
 
 /** MyOrder api key to use. Also known as userId */
-@property (nonatomic, strong) NSString *apiKey;
+@property (nonatomic, copy) NSString *apiKey;
 
 /** MyOrder api secret to use. Also known as password */
-@property (nonatomic, strong) NSString *apiSecret;
+@property (nonatomic, copy) NSString *apiSecret;
 
 /** User's phone number used in all login and transaction operations */
-@property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, copy) NSString *phoneNumber;
 
 /** Payment description to use in transaction operations that allows customization (Ex: iDeal). Defaults to app name */
-@property (nonatomic, strong) NSString *defaultMerchantDescription;
+@property (nonatomic, copy) NSString *defaultMerchantDescription;
 
 /** URL Scheme used by the app. Required for some payment methods (Ex: iDeal). Defaults to nil */
-@property (nonatomic, strong) NSString *URLScheme;
+@property (nonatomic, copy) NSString *URLScheme;
 
 
 /**
@@ -63,19 +64,19 @@ typedef enum MyOrderEnvironment
  */
 
 /** List of available payment provider names in MyOrder library */
-@property (nonatomic, strong, readonly) NSArray *availablePaymentProviders;
+@property (nonatomic, copy, readonly) NSArray *availablePaymentProviders;
 
 /** List of payment provider configured by configureWithPaymentProviders: */
-@property (nonatomic, strong, readonly) NSArray *configuredPaymentProviders;
+@property (nonatomic, copy, readonly) NSArray *configuredPaymentProviders;
 
 /** Returns the current transaction started with newTransactionForProvider: */
 @property (nonatomic, strong, readonly) id<MOTransactionProtocol> currentTransaction;
 
 /** List of available payment operations names in MyOrder library */
-@property (nonatomic, strong, readonly) NSArray *availablePaymentOperations;
+@property (nonatomic, copy, readonly) NSArray *availablePaymentOperations;
 
 /** List of payment options configured by configureWithPaymentOptions: */
-@property (nonatomic, strong, readonly) NSArray *configuredPaymentOperations;
+@property (nonatomic, copy, readonly) NSArray *configuredPaymentOperations;
 
 
 /** Returns the current balance in euros retrieved by updateBalanceOnSuccess:error:. nil if the balance has not been retrieved yet */
@@ -214,13 +215,6 @@ Returns a BOOL indicating if the user has been loggedIn before and saved his cre
 - (void)loginWithPassword:(NSString *)password saveCredentials:(BOOL)save onSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock;
 
 /**
- Logs in the user with the stored credentials from a previously saved login
- @param block Block executed when the login finishes successfully 
- @param errorBlock Block executed when an error occurs
- */
-- (void)loginOnSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock;
-
-/**
  Logs out the user and deletes saved credentials
  @param block Block executed when the logout finishes successfully 
  @param errorBlock Block executed when an error occurs
@@ -260,7 +254,7 @@ Returns a BOOL indicating if the user has been loggedIn before and saved his cre
  @param block Block executed when the update finishes successfully
  @param errorBlock Block executed when an error occurs
  */
-- (void)updatePassword:(NSString *)password onSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock;
+- (void)updatePassword:(NSString *)password oldPassword:(NSString *)oldPassword onSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock;
 
 /**
  Updates the user's balance
@@ -305,11 +299,23 @@ Returns a BOOL indicating if the user has been loggedIn before and saved his cre
 - (void)loadWalletHistoryOnSuccess:(MOResponseDictionaryBlock)block error:(MOErrorBlock)errorBlock;
 
 
+@end
+
+
+@interface MyOrder (Others)
+
 + (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)tableName NS_FORMAT_ARGUMENT(1);
 
 @end
 
 
+@interface MyOrder (Deprecated)
+- (void)loginOnSuccess:(MOBlock)block error:(MOErrorBlock)errorBlock __deprecated_msg("Method not longer supported. Password can not be stored. Remove this call");
+@end
+
 @interface MOApiConnection (MyOrderWrapper)
 + (MOApiConnection *)load:(NSString *)path params:(NSDictionary *)params onSuccess:(MOApiConnectionSuccessBlock)block onError:(MOApiConnectionErrorBlock)errorBlock;
 @end
+
+
+

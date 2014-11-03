@@ -18,10 +18,10 @@ typedef void(^MOMiniTixConfirmationBlock)(NSInteger code, NSString *updatedReque
 
 @interface MOMiniTixAccount : NSObject
 
-@property (nonatomic, strong) NSString *bankAccountNumber;
-@property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *IBAN;
-@property (nonatomic, strong) NSString *BIC;
+@property (nonatomic, copy) NSString *bankAccountNumber;
+@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *IBAN;
+@property (nonatomic, copy) NSString *BIC;
 @property (nonatomic, strong) NSNumber *autoCharge;
 @property (nonatomic, strong) NSNumber *autoChargeAllowed;
 @property (nonatomic, strong) NSNumber *autoChargeAmount;
@@ -29,7 +29,7 @@ typedef void(^MOMiniTixConfirmationBlock)(NSInteger code, NSString *updatedReque
 @property (nonatomic, strong) NSNumber *autoChargeBlocked;
 @property (nonatomic, strong) NSNumber *autoChargeContractActive;
 @property (nonatomic, strong) NSNumber *autoChargePending;
-@property (nonatomic, strong) NSString *autoChargePeriod;
+@property (nonatomic, copy) NSString *autoChargePeriod;
 
 /**
  Returns the last loaded MiniTix account

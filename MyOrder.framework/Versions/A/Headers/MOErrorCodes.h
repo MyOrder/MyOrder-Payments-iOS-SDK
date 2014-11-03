@@ -20,6 +20,8 @@ typedef enum {
     MOErrorTransactionMissingReturnParam = 5003,
     MOErrorGenericMissingRequiredParam = 5004,
     MOErrorGenericTransactionFailure = 5005,
+    
+    MOErrorNotSupported = 60001,
 } MOErrorCode;
 
 static NSString * const MOErrorDomain = @"com.myorder";

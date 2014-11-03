@@ -19,13 +19,13 @@
 /**
  Order Id given by the external system behind the transaction. Required
 */
-@property (nonatomic, strong) NSString *externalOrderId;
+@property (nonatomic, copy) NSString *externalOrderId;
 
 
 /**
  Internal Order Id used by MyOrder. If provided, payment will be done with previous fulfillment data. Optional
  */
-@property (nonatomic, strong) NSString *orderId;
+@property (nonatomic, copy) NSString *orderId;
 
 
 /**

@@ -16,9 +16,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     MyOrder *myOrder = [MyOrder shared];
-    myOrder.apiKey = @"d712d563-d5ed-4826-8920-1b2c2b743ba9";
-    myOrder.apiSecret = @"hH3#1PxxS";
-    myOrder.environment = MyOrderEnvironmentSandbox;
+    myOrder.apiKey = @"36bd8913-bf56-4aa0-9492-49a3240597ea";
+    myOrder.apiSecret = @"12H@c9kT$At";
+    myOrder.environment = MyOrderEnvironmentPlayground;
     myOrder.URLScheme = @"myorder-sdk";
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

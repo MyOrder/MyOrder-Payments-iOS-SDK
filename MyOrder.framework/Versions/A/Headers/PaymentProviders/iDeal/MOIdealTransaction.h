@@ -11,14 +11,8 @@
 /** iDeal transaction */
 @interface MOIdealTransaction : MOTransaction
 
-/** Return url to use on the external party service as callback */
-@property (nonatomic, strong) NSString *returnUrl;
-
 /** Issuer url to open for confirm the transaction */
-@property (nonatomic, strong) NSString *issuerUrl;
-
-/** Transaction ID */
-@property (nonatomic, strong) NSString *transactionId;
+@property (nonatomic, copy) NSString *issuerUrl;
 
 /** Selected Issuer */
 @property (nonatomic, strong) NSDictionary *selectedIssuer;
@@ -35,13 +29,6 @@
  @param errorBlock Error block
  */
 - (void)loadIssuersOnSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
-
-/** Check if the ideal transaction status
- @param block Success block
- @param errorBlock Error block
- */
-- (void)checkIdealStatusOnSuccess:(MOPluginBlock)block error:(MOPluginErrorBlock)errorBlock;
-
 
 /** Returns the default isssuer (last selected issuer)
  @return NSDictionary with issuer information

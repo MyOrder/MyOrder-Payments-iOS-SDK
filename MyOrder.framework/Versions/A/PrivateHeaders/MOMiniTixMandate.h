@@ -15,10 +15,10 @@ typedef void(^MOMandateBlock)(MOMiniTixMandate *mandate);
 
 @interface MOMiniTixMandate : NSObject
 
-@property (nonatomic, strong) NSString *resultCode;
-@property (nonatomic, strong) NSString *requestId;
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *confirmationCode;
+@property (nonatomic, copy) NSString *resultCode;
+@property (nonatomic, copy) NSString *requestId;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *confirmationCode;
 
 @property (readonly) BOOL requiresConfirmation;
 

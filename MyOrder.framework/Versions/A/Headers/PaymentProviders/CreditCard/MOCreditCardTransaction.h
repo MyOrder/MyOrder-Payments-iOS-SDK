@@ -13,19 +13,19 @@
 @interface MOCreditCardTransaction : MOTransaction
 
 /** Credit card number */
-@property (nonatomic, strong) NSString *creditcardNumber;
+@property (nonatomic, copy) NSString *creditcardNumber;
 
 /** Credit card date */
-@property (nonatomic, strong) NSString *creditcardDate;
+@property (nonatomic, copy) NSString *creditcardDate;
 
 /** Credit card CVC */
-@property (nonatomic, strong) NSString *creditcardCvc;
+@property (nonatomic, copy) NSString *creditcardCvc;
 
 /** Bool number indicating if should save the credit card */
 @property (nonatomic, strong) NSNumber *saveAlias;
 
 /** String indicating the last saved alias laoded with loadSavedAliasOnSuccess:error: */
-@property (nonatomic, strong) NSString *savedAlias;
+@property (nonatomic, copy) NSString *savedAlias;
 
 
 /** Load a previously saved card

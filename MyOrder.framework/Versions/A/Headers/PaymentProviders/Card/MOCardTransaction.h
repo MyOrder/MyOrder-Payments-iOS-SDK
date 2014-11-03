@@ -12,6 +12,6 @@
 @interface MOCardTransaction : MOTransaction
 
 /** MyOrder card code */
-@property (nonatomic, strong) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 @end
